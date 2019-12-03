@@ -1,31 +1,33 @@
-var showAlertMessage = function(message, disableErrorMessage) {
+function showAlertMessage(message, disableErrorMessage) {
     if (disableErrorMessage) return;
     $("#message").text(message);
     $(".modal").modal('show');
     setTimeout(function() {
         $(".modal").modal('hide');
     }, 1500);
+}
+
+/**
+ * ローカルストレージに設定内容を保存します
+ */
+function saveValuesForLocalStorage() {
+    console.log('isOpenNewtab: ' + isOpenNewtab);
+    console.log('disableErrorMessage: ' + disableErrorMessage);
+    console.log('hiddenShortcutMenu: ' + hiddenShortcutMenu);
+
+    chrome.storage.local.set({
+        "isOpenNewtab": isOpenNewtab,
+        "disableErrorMessage": disableErrorMessage,
+        "hiddenShortcutMenu": hiddenShortcutMenu,
+    });
 };
 
-var validationNumeric = function(value, disableErrorMessage) {
-    if (value.length == 0) {
-        showAlertMessage('数値を入力してください', disableErrorMessage);
-        return false;
-    }
-    var regex = /^\d+$/gi;
-    var matches = regex.exec(value);
-    if (matches.length < 1) {
-        showAlertMessage('数値を入力してください', disableErrorMessage);
-        return false;
-    }
-    if (matches[0].length != 12) {
-        showAlertMessage('RestaurantIdのフォーマットが正しくありません', disableErrorMessage);
-        return false;
-    }
-    return true;
-};
-
-var transitionToNextPage = function(url, newTab) {
+/**
+ * 指定したURLを開きます。
+ * @param url
+ * @param newTab 新しいタブで開くか？
+ */
+function transitionToNextPage(url, newTab) {
     var background = chrome.extension.getBackgroundPage();
 
     if (newTab) {
@@ -39,14 +41,12 @@ var transitionToNextPage = function(url, newTab) {
         var active = tabs[0].id;
 
         // Set the URL to the Local-NTP (New Tab Page)
-        // chrome.tabs.update(active, { url: "chrome-search://local-ntp/local-ntp.html" }, function() { });
         chrome.tabs.update(active, { url: url }, function() { });
     });
     window.close();
-};
+}
 
 $(function() {
-
     $('[data-toggle="tooltip"]').tooltip();
 
     $('h5').click(function() {
@@ -57,59 +57,73 @@ $(function() {
         }
     });
 
-    $('button').click(function() {
-        var buttonName = $(this).attr('id');
-        var className = $(this).attr('class');
+    $('.btn-image').click(function() {
         var newTab = $('#btn_newtab').prop('checked');
-        var disableErrorMessage = $('#btn_disable_error_message').prop('checked');
-        if (className == 'btn-image') {
-            return transitionToNextPage($(this).attr('data-href'), newTab);
-        }
-        var value = $('#restaurant_id').val();
-        if (!validationNumeric(value, disableErrorMessage)) {
-            return;
-        }
-        var url = '';
-        switch (buttonName) {
-            case 'btn_go_restaurant':
-                url = 'https://retty.me/restaurant/' + value;
-                break;
-            case 'btn_go_owner':
-                url = 'https://owner.retty.me/restaurant/' + value + '/index';
-                break;
-            case 'btn_go_owner_stg':
-                url = 'https://owner-staging.retty.me/restaurant/' + value + '/index';
-                break;
-            case 'btn_go_ebimayo':
-                url = 'https://gotanda-minmin.retty.me/cs/' + value;
-                break;
-            case 'btn_go_minmin':
-                url = 'https://retty.me/minmin/edit_restaurant.php?restaurant_id=' + value;
-                break;
-            case 'btn_go_yokocho':
-                url = 'https://ebisu-yokocho.retty.me/detail/' + value;
-                break;
-            case 'btn_go_reserve':
-                url = 'https://reserve.retty.me/restaurant/' + value + '/v2/reserve/step1';
-                break;
-            case 'btn_go_ebisu_minmin':
-                url = 'https://ebisu-minmin.retty.me/?restaurant_id=' + value;
-                break;
-            default:
-                return;
-        }
-        console.log(url);
-        transitionToNextPage(url, newTab);
+        transitionToNextPage($(this).attr('data-href'), newTab);
     });
 
-    chrome.tabs.getSelected(null, function(tab) {
-        var pageMeta = tab.title + "\n" + tab.url;
-        if (tab.favIconUrl) {
-            $('textarea#favicon-url').val(tab.favIconUrl);
-            pageMeta += "\n" + tab.favIconUrl;
+    $("#copy-to-clipboard").click(function() {
+        chrome.tabs.query({}, function(results) {
+            let tabUrls = [];
+            for (i = 0; i < results.length; i++) {
+                const tab = results[i];
+                tabUrls.push(tab.url);
+            }
+            var textArea = document.createElement('textarea');
+            textArea.value = tabUrls.join("\n");
+            document.body.appendChild(textArea);
+
+            textArea.select();
+            document.execCommand('copy');
+
+            document.body.removeChild(textArea);
+        });
+    });
+
+    $('input[type="checkbox"]').change(function() {
+        var value = $(this).prop('checked');
+        switch ($(this).attr('id')) {
+            case 'btn_newtab':
+                isOpenNewtab = value;
+                break;
+            case 'btn_disable_error_message':
+                disableErrorMessage = value;
+                break;
+            case 'btn_hidden_shortcut_menu':
+                hiddenShortcutMenu = value;
+            default:
+                break;
         }
-        $('input#url').val(tab.url);
-        $('input#title').val(tab.title);
-        $('#page-meta').val(pageMeta);
+        saveValuesForLocalStorage();
+    });
+    values = [
+        "isOpenNewtab",
+        "isOpenTab",
+        "hiddenShortcutMenu",
+    ];
+
+    chrome.storage.local.get(values, function(items) {
+        // LocalStorageから設定情報を取得
+        // LocalStorageから設定情報を取得
+        isOpenNewtab = items.isOpenNewtab;
+        disableErrorMessage = items.disableErrorMessage;
+        hiddenShortcutMenu = items.hiddenShortcutMenu;
+
+        $('#btn_newtab').prop('checked', isOpenNewtab);
+
+        console.log(items);
+        chrome.tabs.getSelected(null, function(tab) {
+            var pageMeta = tab.title + "\n" + tab.url;
+            if (tab.favIconUrl) {
+                $('textarea#favicon-url').val(tab.favIconUrl);
+                pageMeta += "\n" + tab.favIconUrl;
+            }
+            $('input#url').val(tab.url);
+            $('input#title').val(tab.title);
+            $('#page-meta').val(pageMeta);
+        });
+        chrome.tabs.query({}, function(results) {
+            $("#information").html(results.length);
+        });
     });
 });
