@@ -80,6 +80,16 @@ $(function() {
         });
     });
 
+    $('#reload-all-tabs').click(function() {
+        chrome.tabs.query({}, function(result) {
+            var urls = [];
+            for (i = 0; i < result.length; i++) {
+                const tab = result[i];
+                chrome.tabs.reload(tab.id);
+            }
+        });
+    });
+
     $('input[type="checkbox"]').change(function() {
         var value = $(this).prop('checked');
         switch ($(this).attr('id')) {
