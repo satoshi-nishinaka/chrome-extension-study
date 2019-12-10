@@ -63,6 +63,19 @@ $(function() {
     });
 
     $("#copy-to-clipboard").click(function() {
+        chrome.tabs.getSelected(null, function(tab) {
+            var textArea = document.createElement('textarea');
+            textArea.value = tab.title + "\n" + tab.url;
+            document.body.appendChild(textArea);
+
+            textArea.select();
+            document.execCommand('copy');
+
+            document.body.removeChild(textArea);
+        });
+    });
+
+    $("#all-copy-to-clipboard").click(function() {
         chrome.tabs.query({}, function(results) {
             let tabUrls = [];
             for (i = 0; i < results.length; i++) {
@@ -90,6 +103,21 @@ $(function() {
         });
     });
 
+    $('#open-by-text').click(function() {
+        var text = $('#referer').val();
+        console.log(text);
+        var lines = unique(text.split('\n'));
+
+        for (i = 0; i < lines.length; i++) {
+            let line = lines[i];
+            if (line.startsWith('http://') || line.startsWith('https://')) {
+                chrome.tabs.create({
+                    url: line
+                });
+            }
+        }
+    });
+
     $('input[type="checkbox"]').change(function() {
         var value = $(this).prop('checked');
         switch ($(this).attr('id')) {
@@ -113,7 +141,6 @@ $(function() {
     ];
 
     chrome.storage.local.get(values, function(items) {
-        // LocalStorageから設定情報を取得
         // LocalStorageから設定情報を取得
         isOpenNewtab = items.isOpenNewtab;
         disableErrorMessage = items.disableErrorMessage;

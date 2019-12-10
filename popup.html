@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0.5em;
-            /*width: 30em;*/
+            width: 360px;
             font-size: 12px;
         }
         section {
@@ -63,16 +63,15 @@
             padding: 4px;
             font-weight: bold;
         }
+        #text-area-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="form-group">
         <section>
             <span id='information'></span>
-        </section>
-        <section>
-            <button class="btn btn-info btn-sm" id='copy-to-clipboard'>開いているタブのURLをクリップボードにコピーする</button>
-            <button class="btn btn-warning btn-sm" id='reload-all-tabs'>開いているタブをすべてリロードする</button>
         </section>
         <section>
             <h5 data-target='short-cuts'>Short cuts</h5>
@@ -169,7 +168,16 @@
             </div>
         </section>
         <section>
-            <iframe id="iframe" width="100%" height="320px" style="display: none;"/>
+            <h5 data-target='tools'>Tools</h5>
+            <div class='card toggle-box' id='tools'>
+                <textarea rows="5" id='referer' class='form-control'></textarea>
+                <button class="btn btn-warning btn-sm" id='open-by-text'>URLを開く</button>
+                <section>
+                    <button class="btn btn-info btn-sm" id='all-copy-to-clipboard'>開いているすべてのタブのURLをクリップボードにコピーする</button>
+                    <button class="btn btn-info btn-sm" id='copy-to-clipboard'>開いているタブのURLをクリップボードにコピーする</button>
+                    <button class="btn btn-warning btn-sm" id='reload-all-tabs'>開いているタブをすべてリロードする</button>
+                </section>
+            </div>
         </section>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog">
