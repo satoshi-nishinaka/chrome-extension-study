@@ -1,9 +1,9 @@
 function showAlertMessage(message, disableErrorMessage) {
     if (disableErrorMessage) return;
-    $("#message").text(message);
-    $(".modal").modal('show');
+    $('#message').text(message);
+    $('.modal').modal('show');
     setTimeout(function() {
-        $(".modal").modal('hide');
+        $('.modal').modal('hide');
     }, 1500);
 }
 
@@ -11,14 +11,14 @@ function showAlertMessage(message, disableErrorMessage) {
  * ローカルストレージに設定内容を保存します
  */
 function saveValuesForLocalStorage() {
-    console.log('isOpenNewtab: ' + isOpenNewtab);
-    console.log('disableErrorMessage: ' + disableErrorMessage);
-    console.log('hiddenShortcutMenu: ' + hiddenShortcutMenu);
+    console.log(`isOpenNewtab: ${isOpenNewtab}`);
+    console.log(`disableErrorMessage: ${disableErrorMessage}`);
+    console.log(`hiddenShortcutMenu: ${hiddenShortcutMenu}`);
 
     chrome.storage.local.set({
-        "isOpenNewtab": isOpenNewtab,
-        "disableErrorMessage": disableErrorMessage,
-        "hiddenShortcutMenu": hiddenShortcutMenu,
+        'isOpenNewtab': isOpenNewtab,
+        'disableErrorMessage': disableErrorMessage,
+        'hiddenShortcutMenu': hiddenShortcutMenu,
     });
 };
 
@@ -78,8 +78,7 @@ $(function() {
     $("#all-copy-to-clipboard").click(function() {
         chrome.tabs.query({}, function(results) {
             let tabUrls = [];
-            for (i = 0; i < results.length; i++) {
-                const tab = results[i];
+            for (const tab of results) {
                 tabUrls.push(tab.url);
             }
             var textArea = document.createElement('textarea');
@@ -96,8 +95,7 @@ $(function() {
     $('#reload-all-tabs').click(function() {
         chrome.tabs.query({}, function(result) {
             var urls = [];
-            for (i = 0; i < result.length; i++) {
-                const tab = result[i];
+            for (const tab of result) {
                 chrome.tabs.reload(tab.id);
             }
         });
@@ -107,9 +105,7 @@ $(function() {
         var text = $('#referer').val();
         console.log(text);
         var lines = unique(text.split('\n'));
-
-        for (i = 0; i < lines.length; i++) {
-            let line = lines[i];
+        for (const line of lines) {
             if (line.startsWith('http://') || line.startsWith('https://')) {
                 chrome.tabs.create({
                     url: line

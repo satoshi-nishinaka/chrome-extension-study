@@ -12,7 +12,7 @@ function saveUrlAndTitle() {
         // 3. テキストエリアを削除
         document.body.removeChild(textArea);
 
-        console.log("Copied !");
+        alert('現在開いているページのタイトルとURLをクリップボードにコピーしました');
     });
 }
 
@@ -26,6 +26,7 @@ function saveUrlAndTitleForMarkDown() {
         document.execCommand('copy');
 
         document.body.removeChild(textArea);
+        alert('現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました');
     });
 }
 
