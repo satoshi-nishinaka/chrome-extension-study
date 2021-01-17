@@ -1,10 +1,9 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-    <script type="text/javascript" src="js/background.js"></script>
+    <script type="text/javascript" src="js/vendor.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
     <style type="text/css">
         body {
@@ -13,25 +12,32 @@
             width: 380px;
             font-size: 12px;
         }
+
         section {
             margin: 2px 0 2px 0;
             padding: 2px 0;
         }
+
         h6 {
             text-align: center;
         }
+
         button {
             margin: 2px;
         }
+
         span.label-info {
             margin-left: 4px;
         }
+
         .card-header {
             padding: 0;
         }
+
         .card-body {
             padding: 4px;
         }
+
         .btn-image {
             border: 0;
             width: 24px;
@@ -39,20 +45,26 @@
             padding: 0;
             margin: 0 auto;
         }
+
         .btn-image img {
             width: 24px;
             height: 24px;
             margin: 0 auto;
         }
+
         .btn-sm {
             font-size: 1em;
         }
-        textarea.form-control, input[type="text"] {
+
+        textarea.form-control,
+        input[type="text"] {
             font-size: 12px;
         }
+
         .toggle-box {
             display: none;
         }
+
         #information {
             position: fixed;
             right: 4px;
@@ -63,11 +75,13 @@
             padding: 4px;
             font-weight: bold;
         }
+
         #text-area-hidden {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div class="form-group">
         <section>
@@ -79,76 +93,96 @@
                 <label><input type='checkbox' id='btn_newtab' /><span class='label-info'>新しいタブで開く</span></label>
                 <h6 class="card-header">☆SNS★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://www.facebook.com/' data-toggle='tooltip' title='Facebook'>
-                        <img src='https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico?_nc_eui2=AeHkbnXHk8-uQM0bm9AaOT7WPOn1bULX7cv759IrZkPcIP6tSZ3bESNu27hkrF2Bo5Wu3mi91ph1nXTWKotHDb77lmXS1hY28HjCxNDFaIoBrA' />
+                    <button class='btn-image' data-href='https://www.facebook.com/' data-toggle='tooltip'
+                        title='Facebook'>
+                        <img
+                            src='https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico?_nc_eui2=AeHkbnXHk8-uQM0bm9AaOT7WPOn1bULX7cv759IrZkPcIP6tSZ3bESNu27hkrF2Bo5Wu3mi91ph1nXTWKotHDb77lmXS1hY28HjCxNDFaIoBrA' />
                     </button>
-                    <button class='btn-image' data-href='https://www.instagram.com/' data-toggle='tooltip' title='Instagram'>
+                    <button class='btn-image' data-href='https://www.instagram.com/' data-toggle='tooltip'
+                        title='Instagram'>
                         <img src='https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico' />
                     </button>
                     <button class='btn-image' data-href='https://twitter.com/' data-toggle='tooltip' title='Twitter'>
                         <img src='https://abs.twimg.com/favicons/favicon.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://www.flickr.com/' data-toggle='tooltip' title='Find your inspiration. | Flickr'>
+                    <button class='btn-image' data-href='https://www.flickr.com/' data-toggle='tooltip'
+                        title='Find your inspiration. | Flickr'>
                         <img src='https://s.yimg.com/pw/favicon.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://www.linkedin.com/' data-toggle='tooltip' title='LinkedIn'>
+                    <button class='btn-image' data-href='https://www.linkedin.com/' data-toggle='tooltip'
+                        title='LinkedIn'>
                         <img src='https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca' />
                     </button>
-                    <button class='btn-image' data-href='https://www.youtube.com/' data-toggle='tooltip' title='YouTube'>
+                    <button class='btn-image' data-href='https://www.youtube.com/' data-toggle='tooltip'
+                        title='YouTube'>
                         <img src='https://s.ytimg.com/yts/img/favicon_32-vflOogEID.png' />
                     </button>
-                    <button class='btn-image' data-href='https://www.last.fm/ja/home' data-toggle='tooltip' title='Last.fm'>
+                    <button class='btn-image' data-href='https://www.last.fm/ja/home' data-toggle='tooltip'
+                        title='Last.fm'>
                         <img src='https://www.last.fm/static/images/favicon.702b239b6194.ico' />
                     </button>
                 </div>
                 <h6 class="card-header">☆Stream★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://www.dazn.com/ja-JP/home' data-toggle='tooltip' title="DAZN">
+                    <button class='btn-image' data-href='https://www.dazn.com/ja-JP/home' data-toggle='tooltip'
+                        title="DAZN">
                         <img src="http://cdn.dazn.com/app/web/1.36.4/images/favicon/favicon-96x96.png" />
                     </button>
-                    <button class='btn-image' data-href='https://abema.tv/' data-toggle='tooltip' title='AbemaTV(アベマTV) | 無料で楽しめるインターネットテレビ局'>
+                    <button class='btn-image' data-href='https://abema.tv/' data-toggle='tooltip'
+                        title='AbemaTV(アベマTV) | 無料で楽しめるインターネットテレビ局'>
                         <img src='https://abema.tv/favicon.ico?v=2' />
                     </button>
-                    <button class='btn-image' data-href='https://www.jsports.co.jp/' data-toggle='tooltip' title='【公式】J SPORTS総合サイト | 国内最大4チャンネルのスポーツテレビ局'>
+                    <button class='btn-image' data-href='https://www.jsports.co.jp/' data-toggle='tooltip'
+                        title='【公式】J SPORTS総合サイト | 国内最大4チャンネルのスポーツテレビ局'>
                         <img src='https://www.jsports.co.jp/favicon.ico' />
                     </button>
                 </div>
                 <h6 class="card-header">☆News★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://sports.yahoo.co.jp/' data-toggle='tooltip' title='スポーツナビ'>
+                    <button class='btn-image' data-href='https://sports.yahoo.co.jp/' data-toggle='tooltip'
+                        title='スポーツナビ'>
                         <img src='https://s.yimg.jp/images/sports/common/favicon/favicon.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://gunosy.com/' data-toggle='tooltip' title='グノシー 無料で読めるニュースまとめ'>
+                    <button class='btn-image' data-href='https://gunosy.com/' data-toggle='tooltip'
+                        title='グノシー 無料で読めるニュースまとめ'>
                         <img src='https://gunosy.com/favicon.ico' />
                     </button>
                 </div>
                 <h6 class="card-header">☆Gourmet★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://retty.me/' data-toggle="tooltip" title="Rettyグルメ[レッティ]">
+                    <button class='btn-image' data-href='https://retty.me/' data-toggle="tooltip"
+                        title="Rettyグルメ[レッティ]">
                         <img src='https://retty.me/favicon.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://tabelog.com/' data-toggle="tooltip" title="食べログ - ランキングと口コミで探せるグルメサイト">
+                    <button class='btn-image' data-href='https://tabelog.com/' data-toggle="tooltip"
+                        title="食べログ - ランキングと口コミで探せるグルメサイト">
                         <img src='https://tblg.k-img.com/favicon.ico?20170919' />
                     </button>
-                    <button class='btn-image' data-href='https://www.gnavi.co.jp/' data-toggle="tooltip" title="ぐるなび - レストラン予約と宴会・グルメ情報 検索サイト">
+                    <button class='btn-image' data-href='https://www.gnavi.co.jp/' data-toggle="tooltip"
+                        title="ぐるなび - レストラン予約と宴会・グルメ情報 検索サイト">
                         <img src='http://c-www.gnst.jp/img/icon/favicon.ico' />
                     </button>
                 </div>
                 <h6 class="card-header">☆Fin-tech★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://moneyforward.com/' data-toggle='tooltip' title='家計簿アプリ・家計簿ソフト「マネーフォワード」'>
+                    <button class='btn-image' data-href='https://moneyforward.com/' data-toggle='tooltip'
+                        title='家計簿アプリ・家計簿ソフト「マネーフォワード」'>
                         <img src='icons/mf.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://bitflyer.com/ja-jp/' data-toggle='tooltip' title='仮想通貨ビットコイン（Bitcoin）の購入/販売所/取引所【bitFlyer】'>
+                    <button class='btn-image' data-href='https://bitflyer.com/ja-jp/' data-toggle='tooltip'
+                        title='仮想通貨ビットコイン（Bitcoin）の購入/販売所/取引所【bitFlyer】'>
                         <img src='https://bitflyer.com/favicon.ico' />
                     </button>
                 </div>
                 <h6 class="card-header">☆お役立ち★</h6>
                 <div class="card-body">
-                    <button class='btn-image' data-href='https://www.w3schools.com/bootstrap/bootstrap_ref_css_helpers.asp' data-toggle='tooltip' title='Bootstrap CSS Helper Classes Reference'>
+                    <button class='btn-image'
+                        data-href='https://www.w3schools.com/bootstrap/bootstrap_ref_css_helpers.asp'
+                        data-toggle='tooltip' title='Bootstrap CSS Helper Classes Reference'>
                         <img src='https://www.w3schools.com/favicon.ico' />
                     </button>
-                    <button class='btn-image' data-href='https://lets-emoji.com/emojilist/emojilist-1/' data-toggle='tooltip' title="絵文字一覧（顔文字と感情：Smileys & Emotion）😀 | Let's EMOJI">
+                    <button class='btn-image' data-href='https://lets-emoji.com/emojilist/emojilist-1/'
+                        data-toggle='tooltip' title="絵文字一覧（顔文字と感情：Smileys & Emotion）😀 | Let's EMOJI">
                         <img src='https://lets-emoji.com/wp-content/uploads/2016/10/LetsEMOJI_v2_400x400-100x100.png' />
                     </button>
                 </div>
@@ -174,7 +208,8 @@
                 <button class="btn btn-warning btn-sm" id='open-by-text'>URLを開く</button>
                 <section>
                     <button class="btn btn-info btn-sm" id='copy-to-clipboard'>現在アクティブなタブのURLをクリップボードにコピーする</button>
-                    <button class="btn btn-info btn-sm" id='all-copy-to-clipboard'>開いているすべてのタブのURLをクリップボードにコピーする</button>
+                    <button class="btn btn-info btn-sm"
+                        id='all-copy-to-clipboard'>開いているすべてのタブのURLをクリップボードにコピーする</button>
                     <button class="btn btn-warning btn-sm" id='reload-all-tabs'>開いているタブをすべてリロードする</button>
                 </section>
             </div>
@@ -190,4 +225,5 @@
         </div>
     </div>
 </body>
+
 </html>
