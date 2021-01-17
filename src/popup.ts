@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import * as $ from "jquery";
 import { LocalStorage } from './LocalStorage';
 require('jquery')
 require("jquery-ui/ui/widgets/tooltip.js");
@@ -10,6 +10,10 @@ require("bootstrap")
 * @param newTab 新しいタブで開くか？
 */
 function transitionToNextPage(url: string, newTab: boolean): void {
+  if (url === undefined) {
+    return
+  }
+  alert(url)
   if (newTab) {
     chrome.tabs.create({ url: url });
     return;
@@ -28,7 +32,6 @@ function transitionToNextPage(url: string, newTab: boolean): void {
 
 $(() => {
   const storage = new LocalStorage();
-
   // LocalStorageから設定情報を取得
   storage.readValues(() => {
     $('#btn_newtab').prop('checked', storage.isOpenNewTab);
@@ -52,15 +55,15 @@ $(() => {
 
   $('h5').on('click', (event) => {
     const target = $(event.target).attr('data-target');
-    console.log(target);
     if (target) {
       $('#' + target).toggle(100);
     }
   });
 
   $('.btn-image').on('click', (event) => {
-    const newTab = $('#btn_newtab').prop('checked');
-    transitionToNextPage($(event.target).attr('data-href'), newTab);
+    const newTab = storage.isOpenNewTab
+    const url = $(event.target).parent().attr('data-href')
+    transitionToNextPage(url, newTab);
   });
 
   $("#copy-to-clipboard").on('click', (event) => {
@@ -103,7 +106,6 @@ $(() => {
 
   $('#open-by-text').on('click', (event) => {
     const text = $('#referer').val().toString();
-    console.log(text);
     var lines = unique(text.split('\n'));
     for (const line of lines) {
       if (line.startsWith('http://') || line.startsWith('https://')) {
@@ -115,8 +117,9 @@ $(() => {
   });
 
   $('input[type="checkbox"]').on('change', (event) => {
+    const id = $(event.target).attr('id')
     const value = $(event.target).prop('checked');
-    switch ($(event.target).attr('id')) {
+    switch (id) {
       case 'btn_newtab':
         storage.isOpenNewTab = value;
         break;

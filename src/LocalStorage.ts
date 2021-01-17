@@ -1,6 +1,6 @@
 export class LocalStorage {
-    public isOpenNewTab = false;
-    public hiddenShortcutMenu = false;
+    public isOpenNewTab: boolean = false;
+    public hiddenShortcutMenu: boolean = false;
 
     readValues(callBack: () => void): void {
         const values = [
@@ -27,7 +27,7 @@ export class LocalStorage {
     saveValues(): void {
         console.log('saveValuesForLocalStorage -----');
         chrome.storage.local.set({
-            'isOpenNewtab': this.isOpenNewTab,
+            'isOpenNewTab': this.isOpenNewTab,
             'hiddenShortcutMenu': this.hiddenShortcutMenu,
         });
     }
