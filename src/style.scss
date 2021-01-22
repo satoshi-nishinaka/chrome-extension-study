@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0.5em;
+    width: 380px;
+    font-size: 12px;
+}
+
+section {
+    margin: 2px 0 2px 0;
+    padding: 2px 0;
+}
+
+button {
+    margin: 2px;
+}
+
+span.label-info {
+    margin-left: 4px;
+}
+.card {
+    margin: 4px 0;
+
+    h6 {
+        text-align: center;
+        padding: 2px 0;
+    }
+
+    &-header {
+        padding: 0;
+    }
+
+    &-body {
+        padding: 4px;
+    }
+}
+
+.btn-image {
+    background-color: #fff;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0 auto;
+
+    img {
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+    }
+    img:hover {
+        width: 32px;
+        height: 32px;
+    }
+}
+.btn-sm {
+    font-size: 1em;
+}
+
+textarea.form-control,
+input[type="text"] {
+    font-size: 12px;
+}
+
+#text-area-hidden {
+    display: none;
+}

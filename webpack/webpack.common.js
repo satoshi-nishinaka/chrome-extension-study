@@ -8,6 +8,7 @@ module.exports = {
         popup: path.join(__dirname, srcDir + 'popup.ts'),
         background: path.join(__dirname, srcDir + 'background.ts'),
         // content_script: path.join(__dirname, srcDir + 'content_script.ts')
+        style: path.join(__dirname, srcDir + 'style.scss'),
     },
     output: {
         path: path.join(__dirname, '../dist/js'),
@@ -25,6 +26,21 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    {
+                        loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default,
+                        options: {
+                            sassOptions: {
+                                outputStyle: 'expanded',
+                            },
+                        },
+                    }
+                ]
             }
         ]
     },
