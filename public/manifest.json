@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "various short cuts",
+  "name": "ShortCut Extension",
   "permissions": [
     "tabs",
     "clipboardWrite",
