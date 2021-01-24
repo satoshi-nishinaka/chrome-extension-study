@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-typescript-starter",
+  "name": "short-cut-extension",
   "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
+  "description": "short-cut-extension",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
@@ -9,11 +9,11 @@
     "clean": "rimraf dist",
     "test": "npx jest"
   },
-  "author": "",
+  "author": "satoshi-nishinaka",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+    "url": "https://github.com/satoshi-nishinaka/chrome-extension-study.git"
   },
   "dependencies": {
     "@types/jqueryui": "^1.12.14",
