@@ -1,6 +1,8 @@
 # chrome-extension-study
+[satoshi-nishinaka/chrome-extension-study](https://github.com/satoshi-nishinaka/chrome-extension-study)
 
-Qiitaの記事にある「表示しているページのURLをクリップボードにコピーする」を元に、Chrome拡張及びTypeScriptについて勉強する。
+
+Qiitaの記事にある「表示しているページのURLをクリップボードにコピーする」を元に、Chrome拡張及びTypeScript, React, SCSS について勉強する。
 目的はChrome拡張の作成なので、既にこの世に同じようなものがあるかどうかは気にしません。
 
 - [表示中のページのタイトルとURLをキーボードショートカットでクリップボードに保存するChrome拡張を作ってみた - Qiita](https://qiita.com/satake_masaki/items/def09ca51731efa2826f)

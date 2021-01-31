@@ -34,7 +34,7 @@ $(() => {
     $('#btn_newtab').prop('checked', storage.isOpenNewTab);
 
     chrome.tabs.getSelected(null, (tab) => {
-      var pageMeta = `${tab.title}\n${tab.url}`;
+      let pageMeta = `${tab.title}\n${tab.url}`;
       if (tab.favIconUrl) {
         $('textarea#favicon-url').val(tab.favIconUrl);
         pageMeta += "\n" + tab.favIconUrl;
@@ -49,13 +49,6 @@ $(() => {
   });
 
   $('[data-toggle="tooltip"]').tooltip();
-
-  $('h5').on('click', (event) => {
-    const target = $(event.target).attr('data-target');
-    if (target) {
-      $('#' + target).toggle(100);
-    }
-  });
 
   $('.btn-image').on('click', (event) => {
     const newTab = storage.isOpenNewTab
@@ -103,7 +96,7 @@ $(() => {
 
   $('#open-by-text').on('click', (event) => {
     const text = $('#referer').val().toString();
-    var lines = unique(text.split('\n'));
+    const lines = unique(text.split('\n'));
     for (const line of lines) {
       if (line.startsWith('http://') || line.startsWith('https://')) {
         chrome.tabs.create({
@@ -122,6 +115,7 @@ $(() => {
         break;
       case 'btn_hidden_shortcut_menu':
         storage.hiddenShortcutMenu = value;
+        break;
       default:
         break;
     }
