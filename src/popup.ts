@@ -39,8 +39,8 @@ $(() => {
         $('textarea#favicon-url').val(tab.favIconUrl);
         pageMeta += "\n" + tab.favIconUrl;
       }
-      $('input#url').val(tab.url);
-      $('input#title').val(tab.title);
+      $('textarea#url').val(tab.url);
+      $('textarea#title').val(tab.title);
       $('#page-meta').val(pageMeta);
     });
     chrome.tabs.query({}, (results) => {
