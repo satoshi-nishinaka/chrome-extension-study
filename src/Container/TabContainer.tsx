@@ -1,17 +1,25 @@
-import * as React from "react";
+import * as React from 'react'
+import {Tab} from "../Interface/Tab";
 
-interface Props { }
-
-interface State {
+interface Props {
+    title: string,
     tabs: Tab[]
 }
 
-interface Tab {
-    identifyKey: string,
-    title: string,
+interface State {
+    title?: string,
+    tabs?: Tab[]
 }
 
 export default class TabContainer extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            title: props.title,
+            tabs: props.tabs
+        }
+    }
+
     render() {
         return (
             <ul className="nav nav-tabs" id="myTab" role="tablist">

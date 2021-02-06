@@ -1,11 +1,20 @@
 import * as React from 'react'
 
-interface Props {}
-interface State {
+interface Props {
     title: string
 }
 
+interface State {
+    title?: string
+}
+
 export default class CardContainer extends React.Component<Props, State> {
+    constructor(props:Props) {
+        super(props);
+        this.state = {
+            title: props.title
+        }
+    }
     render() {
         return (
             <article className="card">
