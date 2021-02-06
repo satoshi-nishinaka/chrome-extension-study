@@ -1,3 +1,4 @@
+import * as React from "react";
 import * as $ from "jquery";
 import { LocalStorage } from './LocalStorage';
 require('jquery')

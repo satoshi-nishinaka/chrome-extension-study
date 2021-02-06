@@ -23,6 +23,7 @@ export default class ImageButton extends React.Component<Props, State> {
     }
 
     transitionTo() {
+        console.log(this.state.href)
         location.href = this.state.href
     }
 
