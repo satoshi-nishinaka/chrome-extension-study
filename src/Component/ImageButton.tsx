@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {LocalStorage} from "../LocalStorage";
-import bind = chrome.socket.bind;
+import {transitionToNextPage} from "../Functions/Transition";
 
 interface Props {
     title: string,
@@ -32,21 +32,11 @@ export default class ImageButton extends React.Component<Props, State> {
     }
 
     transitionTo() {
+
         const storage = new LocalStorage()
         storage.readValues(() => {
             const url = this.state.url
-            if (storage.isOpenNewTab) {
-                chrome.tabs.create({url: url});
-                return;
-            }
-
-            // Get the current Tab
-            chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-                const active = tabs[0].id;
-                // Set the URL to the Local-NTP (New Tab Page)
-                chrome.tabs.update(active, {url: url}, () => {
-                });
-            });
+            transitionToNextPage(url, storage.isOpenNewTab)
             window.close();
         })
     }
