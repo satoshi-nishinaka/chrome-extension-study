@@ -1,32 +1,24 @@
-import * as React from 'react'
+import * as React from "react";
 import {LocalStorage} from "../LocalStorage";
-import bind = chrome.socket.bind;
 
 interface Props {
-    title: string,
-    image: string,
-    url: string
+    text: string,
+    url: string,
 }
-
 interface State {
-    image?: string,
-    title?: string,
-    url?: string
+    url?: string,
+    text?: string,
 }
-
-export default class ImageButton extends React.Component<Props, State> {
+export default class LinkButton extends React.Component<Props, State> {
     state: State = {
-        title: '',
-        image: '',
         url: '',
+        text: '',
     }
-
     constructor(props: Props) {
-        super(props);
+        super(props)
         this.state = {
-            title: props.title,
-            image: props.image,
             url: props.url,
+            text: props.text,
         }
         this.transitionTo = this.transitionTo.bind(this)
     }
@@ -50,14 +42,10 @@ export default class ImageButton extends React.Component<Props, State> {
             window.close();
         })
     }
-
     render() {
         return (
-            <button data-toggle='tooltip' title={this.state.title} className='btn-image'>
-                <img
-                    src={this.state.image}
-                    alt={this.state.title}
-                    onClick={this.transitionTo}/>
+            <button className="btn btn-primary w-80" onClick={this.transitionTo}>
+                {this.state.text}
             </button>
         )
     }

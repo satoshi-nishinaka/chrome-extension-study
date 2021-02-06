@@ -13,11 +13,17 @@ interface State {
 }
 
 export default class TabEntry extends React.Component<Props, State> {
+    state: State = {
+        title: '',
+        identify: '',
+        active: false,
+    }
     constructor(props: Props) {
         super(props);
         this.state = {
             title: props.title,
             identify: props.identify,
+            active: props.active,
         }
     }
     render() {
