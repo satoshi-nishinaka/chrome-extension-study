@@ -15,7 +15,7 @@ function saveUrlAndTitle(): void {
     alert(
       '現在開いているページのタイトルとURLをクリップボードにコピーしました'
     );
-  });
+  })
 }
 
 function saveUrlAndTitleForMarkDown(): void {
@@ -31,7 +31,7 @@ function saveUrlAndTitleForMarkDown(): void {
     alert(
       '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
     );
-  });
+  })
 }
 
 function unique(array: Array<string>): Array<string> {
@@ -63,10 +63,10 @@ chrome.commands.onCommand.addListener((command) => {
   switch (command) {
     case 'save_url_and_title':
       saveUrlAndTitle();
-      break;
+      break
     case 'save_url_and_title_for_markdown':
       saveUrlAndTitleForMarkDown();
-      break;
+      break
     default:
       break;
   }

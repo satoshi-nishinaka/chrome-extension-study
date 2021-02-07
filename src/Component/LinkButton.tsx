@@ -32,7 +32,7 @@ export default class LinkButton extends React.Component<Props, State> {
     storage.readValues(() => {
       const url = this.state.url;
       transitionToNextPage(url, storage.isOpenNewTab);
-    });
+    })
   }
 
   render() {

@@ -37,7 +37,7 @@ export default class ImageButton extends React.Component<Props, State> {
       const url = this.state.url;
       transitionToNextPage(url, storage.isOpenNewTab);
       window.close();
-    });
+    })
   }
 
   render() {

@@ -9,7 +9,7 @@ export function transitionToNextPage(url: string, newTab: boolean): void {
   }
   if (newTab) {
     chrome.tabs.create({ url: url });
-    return;
+    return
   }
 
   // Get the current Tab
@@ -17,6 +17,6 @@ export function transitionToNextPage(url: string, newTab: boolean): void {
     const active = tabs[0].id;
     // Set the URL to the Local-NTP (New Tab Page)
     chrome.tabs.update(active, { url: url }, function () {});
-  });
-  window.close();
+  })
+  window.close()
 }

@@ -19,11 +19,10 @@ $(() => {
       $('textarea#url').val(tab.url);
       $('textarea#title').val(tab.title);
       $('#page-meta').val(pageMeta);
-    });
-
+    })
     chrome.tabs.query({}, (results) => {
       $('#information').html(results.length.toString());
-    });
+    })
   });
 
   $('[data-toggle="tooltip"]').tooltip();
@@ -38,7 +37,7 @@ $(() => {
       document.execCommand('copy');
 
       document.body.removeChild(textArea);
-    });
+    })
   });
 
   $('#all-copy-to-clipboard').on('click', (event) => {
@@ -55,7 +54,7 @@ $(() => {
       document.execCommand('copy');
 
       document.body.removeChild(textArea);
-    });
+    })
   });
 
   $('#reload-all-tabs').on('click', (event) => {
@@ -64,8 +63,7 @@ $(() => {
         chrome.tabs.reload(tab.id);
       }
     });
-  });
-
+  })
   $('#open-by-text').on('click', (event) => {
     const text = $('#referer').val().toString();
     const lines = unique(text.split('\n'));
@@ -92,5 +90,5 @@ $(() => {
         break;
     }
     storage.saveValues();
-  });
+  })
 });
