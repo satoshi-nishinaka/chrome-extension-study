@@ -1,35 +1,35 @@
 function saveUrlAndTitle(): void {
   chrome.tabs.getSelected(null, (tab) => {
     // 1. 任意のテキストを格納したテキストエリアを作成
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.value = `${tab.title}\n${tab.url}`;
     document.body.appendChild(textArea);
 
     // 2. 作成したテキストエリアを選択し、クリップボードに保存
     textArea.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
 
     // 3. テキストエリアを削除
     document.body.removeChild(textArea);
 
     alert(
-      "現在開いているページのタイトルとURLをクリップボードにコピーしました"
+      '現在開いているページのタイトルとURLをクリップボードにコピーしました'
     );
   });
 }
 
 function saveUrlAndTitleForMarkDown(): void {
   chrome.tabs.getSelected(null, (tab) => {
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.value = `[${tab.title}](${tab.url})`;
     document.body.appendChild(textArea);
 
     textArea.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
 
     document.body.removeChild(textArea);
     alert(
-      "現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました"
+      '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
     );
   });
 }
@@ -61,10 +61,10 @@ Amazonでのイチオシ裏コマンドはマーケットプレイス出品を�
 
 chrome.commands.onCommand.addListener((command) => {
   switch (command) {
-    case "save_url_and_title":
+    case 'save_url_and_title':
       saveUrlAndTitle();
       break;
-    case "save_url_and_title_for_markdown":
+    case 'save_url_and_title_for_markdown':
       saveUrlAndTitleForMarkDown();
       break;
     default:

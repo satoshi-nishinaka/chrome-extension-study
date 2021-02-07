@@ -1,6 +1,6 @@
-import * as React from "react";
-import { LocalStorage } from "../LocalStorage";
-import { transitionToNextPage } from "../Functions/Transition";
+import * as React from 'react';
+import { LocalStorage } from '../LocalStorage';
+import { transitionToNextPage } from '../Functions/Transition';
 
 interface Props {
   title: string;
@@ -16,9 +16,9 @@ interface State {
 
 export default class ImageButton extends React.Component<Props, State> {
   state: State = {
-    title: "",
-    image: "",
-    url: "",
+    title: '',
+    image: '',
+    url: '',
   };
 
   constructor(props: Props) {

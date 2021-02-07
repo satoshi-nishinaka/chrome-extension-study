@@ -1,10 +1,10 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import CardContainer from "./CardContainer";
-import ImageButton from "../Component/ImageButton";
-import TabEntry from "../Component/TabEntry";
-import TabContainer from "./TabContainer";
-import LinkButton from "../Component/LinkButton";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import CardContainer from './CardContainer';
+import ImageButton from '../Component/ImageButton';
+import TabEntry from '../Component/TabEntry';
+import TabContainer from './TabContainer';
+import LinkButton from '../Component/LinkButton';
 
 export default class PopupContainer extends React.Component {
   render() {
@@ -217,6 +217,6 @@ export default class PopupContainer extends React.Component {
   }
 }
 
-if (document.getElementById("root")) {
-  ReactDOM.render(<PopupContainer />, document.getElementById("root"));
+if (document.getElementById('root')) {
+  ReactDOM.render(<PopupContainer />, document.getElementById('root'));
 }

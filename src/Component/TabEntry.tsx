@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface Props {
   title: string;
@@ -14,8 +14,8 @@ interface State {
 
 export default class TabEntry extends React.Component<Props, State> {
   state: State = {
-    title: "",
-    identify: "",
+    title: '',
+    identify: '',
     active: false,
   };
 
@@ -30,7 +30,7 @@ export default class TabEntry extends React.Component<Props, State> {
 
   render() {
     const href = `#${this.state.identify}`;
-    const className = "nav-link" + (this.state.active ? " active" : "");
+    const className = 'nav-link' + (this.state.active ? ' active' : '');
     return (
       <li className="nav-item">
         <a
