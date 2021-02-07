@@ -6,15 +6,18 @@ interface Props {
     text: string,
     url: string,
 }
+
 interface State {
     url?: string,
     text?: string,
 }
+
 export default class LinkButton extends React.Component<Props, State> {
     state: State = {
         url: '',
         text: '',
     }
+
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -31,6 +34,7 @@ export default class LinkButton extends React.Component<Props, State> {
             transitionToNextPage(url, storage.isOpenNewTab)
         })
     }
+
     render() {
         return (
             <button className="btn btn-primary w-80" onClick={this.transitionTo}>

@@ -106,7 +106,7 @@ export default class PopupContainer extends React.Component {
                             <div className='card'>
                                 <h6 className="card-header">☆Favicon★</h6>
                                 <div className="card-body">
-                                    <textarea id='favicon-url' className='form-control'></textarea>
+                                    <textarea id='favicon-url' className='form-control' />
                                 </div>
                                 <h6 className="card-header">☆Title★</h6>
                                 <div className="card-body">

@@ -32,7 +32,6 @@ export default class ImageButton extends React.Component<Props, State> {
     }
 
     transitionTo() {
-
         const storage = new LocalStorage()
         storage.readValues(() => {
             const url = this.state.url

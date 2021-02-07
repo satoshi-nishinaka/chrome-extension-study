@@ -1,10 +1,8 @@
-import * as React from "react";
 import * as $ from "jquery";
 import { LocalStorage } from './LocalStorage';
 require('jquery')
 require("jquery-ui/ui/widgets/tooltip.js");
 require("bootstrap")
-
 
 $(() => {
   const storage = new LocalStorage();
@@ -22,6 +20,7 @@ $(() => {
       $('textarea#title').val(tab.title);
       $('#page-meta').val(pageMeta);
     });
+
     chrome.tabs.query({}, (results) => {
       $("#information").html(results.length.toString());
     });

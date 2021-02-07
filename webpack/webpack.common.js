@@ -1,7 +1,7 @@
-const webpack = require("webpack");
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const srcDir = '../src/';
+const webpack = require("webpack")
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
+const srcDir = '../src/'
 
 module.exports = {
     entry: {
