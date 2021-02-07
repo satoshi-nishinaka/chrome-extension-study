@@ -1,0 +1,44 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "semi": [
+            "error",
+            "never",
+            {
+                "beforeStatementContinuationChars": "never"
+            }
+        ],
+        "semi-spacing": [
+            "error",
+            {
+                "after": true,
+                "before": false
+            }
+        ],
+        "semi-style": [
+            "error",
+            "first"
+        ],
+        "no-extra-semi": "error",
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "error"
+    }
+}

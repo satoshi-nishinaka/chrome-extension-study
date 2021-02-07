@@ -1,13 +1,15 @@
 {
   "name": "short-cut-extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "short-cut-extension",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
     "build": "webpack --config webpack/webpack.prod.js",
     "clean": "rimraf dist",
-    "test": "npx jest"
+    "test": "npx jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix "
   },
   "author": "satoshi-nishinaka",
   "license": "MIT",
@@ -16,20 +18,30 @@
     "url": "https://github.com/satoshi-nishinaka/chrome-extension-study.git"
   },
   "dependencies": {
-    "@types/jqueryui": "^1.12.14",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.0",
     "jquery-ui": "^1.12.1",
-    "moment": "~2.24.0"
+    "moment": "~2.24.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@types/chrome": "0.0.100",
-    "@types/jest": "^25.1.4",
+    "@types/jest": "^25.2.3",
     "@types/jquery": "^3.3.33",
+    "@types/jqueryui": "^1.12.14",
+    "@types/react": "^17.0.1",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
     "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^5.0.1",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "jest": "^25.1.0",
     "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2 ",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
@@ -39,5 +51,9 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "~4.2.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }

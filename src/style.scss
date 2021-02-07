@@ -52,8 +52,15 @@ span.label-info {
         height: 32px;
     }
 }
+
 .btn-sm {
     font-size: 1em;
+}
+
+.nav {
+    &-link {
+        padding: 0.25rem 0.5rem;
+    }
 }
 
 textarea.form-control,
