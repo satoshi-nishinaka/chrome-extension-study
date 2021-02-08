@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import CardContainer from './CardContainer';
 import ImageButton from '../Component/ImageButton';
 import TabEntry from '../Component/TabEntry';
@@ -23,7 +23,7 @@ export default class PopupContainer extends React.Component {
             <TabEntry title="About" identify="about" active={false} />
           </ul>
           <div className="tab-content" id="myTabContent">
-            <TabContainer active={true} identify="home">
+            <TabContainer active={true} identify="home" title={null}>
               <CardContainer title="☆SNS★">
                 <ImageButton
                   title="FaceBook"
@@ -120,24 +120,20 @@ export default class PopupContainer extends React.Component {
                 />
               </CardContainer>
             </TabContainer>
-            <TabContainer active={false} identify="tools">
-              <h5 className="my-2">Tools</h5>
-              <div className="card">
-                <h6 className="card-header">テキストエリアのURLをすべて開く</h6>
-                <div className="card-body">
-                  <textarea
-                    rows={5}
-                    id="referer"
-                    className="form-control mx-auto"
-                  />
-                  <button
-                    className="btn btn-primary btn-sm w-100 mt-2"
-                    id="open-by-text"
-                  >
-                    URLを開く
-                  </button>
-                </div>
-              </div>
+            <TabContainer active={false} identify="tools" title="Tools">
+              <CardContainer title="テキストエリアのURLをすべて開く">
+                <textarea
+                  rows={5}
+                  id="referer"
+                  className="form-control mx-auto"
+                />
+                <button
+                  className="btn btn-primary btn-sm w-100 mt-2"
+                  id="open-by-text"
+                >
+                  URLを開く
+                </button>
+              </CardContainer>
               <div className="card mt-3 p-2">
                 <button
                   className="btn btn-secondary btn-sm w-100"
@@ -165,50 +161,41 @@ export default class PopupContainer extends React.Component {
                 </button>
               </div>
             </TabContainer>
-            <TabContainer active={false} identify="page-information">
-              <h5 className="my-2">Page Information</h5>
-              <div className="card">
-                <h6 className="card-header">☆Favicon★</h6>
-                <div className="card-body">
-                  <textarea id="favicon-url" className="form-control" />
-                </div>
-                <h6 className="card-header">☆Title★</h6>
-                <div className="card-body">
-                  <textarea id="title" className="form-control" />
-                </div>
-                <h6 className="card-header">☆URL★</h6>
-                <div className="card-body">
-                  <textarea id="url" className="form-control" />
-                </div>
-                <h6 className="card-header">☆All★</h6>
-                <div className="card-body">
-                  <textarea id="page-meta" className="form-control" rows={3} />
-                </div>
-              </div>
+            <TabContainer
+              active={false}
+              identify="page-information"
+              title="Page Information"
+            >
+              <CardContainer title="☆Favicon★">
+                <textarea id="favicon-url" className="form-control" />
+              </CardContainer>
+              <CardContainer title="☆Title★">
+                <textarea id="title" className="form-control" />
+              </CardContainer>
+              <CardContainer title="☆URL★">
+                <textarea id="url" className="form-control" />
+              </CardContainer>
+              <CardContainer title="☆All★">
+                <textarea id="page-meta" className="form-control" rows={3} />
+              </CardContainer>
             </TabContainer>
-            <TabContainer active={false} identify="settings">
-              <h5 className="my-2">Settings</h5>
-              <div className="card">
-                <div className="card-body">
-                  <div className="form-row px-2">
-                    <label>
-                      <input type="checkbox" id="btn_newtab" />
-                      <span className="label-info">新しいタブで開く</span>
-                    </label>
-                  </div>
+            <TabContainer active={false} identify="settings" title="Settings">
+              <CardContainer>
+                <div className="form-row px-2">
+                  <label>
+                    <input type="checkbox" id="btn_newtab" />
+                    <span className="label-info">新しいタブで開く</span>
+                  </label>
                 </div>
-              </div>
+              </CardContainer>
             </TabContainer>
-            <TabContainer active={false} identify="about">
-              <h5 className="my-2">About</h5>
-              <div className="card">
-                <div className="card-body text-center">
-                  <LinkButton
-                    text="GitHub"
-                    url="https://github.com/satoshi-nishinaka/chrome-extension-study"
-                  />
-                </div>
-              </div>
+            <TabContainer active={false} identify="about" title="About">
+              <CardContainer title={null} className="text-center">
+                <LinkButton
+                  text="GitHub"
+                  url="https://github.com/satoshi-nishinaka/chrome-extension-study"
+                />
+              </CardContainer>
             </TabContainer>
           </div>
         </section>

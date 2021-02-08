@@ -82,10 +82,10 @@ $(() => {
     switch (id) {
       case 'btn_newtab':
         storage.isOpenNewTab = value;
-        break;
+        break
       case 'btn_hidden_shortcut_menu':
         storage.hiddenShortcutMenu = value;
-        break;
+        break
       default:
         break;
     }

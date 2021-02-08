@@ -9,7 +9,7 @@ export function transitionToNextPage(url: string, newTab: boolean): void {
   }
   if (newTab) {
     chrome.tabs.create({ url: url });
-    return
+    return;
   }
 
   // Get the current Tab

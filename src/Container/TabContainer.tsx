@@ -3,11 +3,13 @@ import * as React from 'react';
 interface Props {
   active: boolean;
   identify: string;
+  title: string | null;
 }
 
 interface State {
   active?: boolean;
   identify?: string;
+  title?: string | null;
 }
 
 export default class TabContainer extends React.Component<Props, State> {
@@ -16,6 +18,7 @@ export default class TabContainer extends React.Component<Props, State> {
     this.state = {
       active: props.active,
       identify: props.identify,
+      title: props.title,
     };
   }
 
@@ -29,6 +32,7 @@ export default class TabContainer extends React.Component<Props, State> {
         role="tabpanel"
         aria-labelledby={this.state.identify + '-tab'}
       >
+        {this.state.title && <h5 className="my-2">{this.state.title}</h5>}
         {React.Children.map(this.props.children, (child) => {
           return child;
         })}

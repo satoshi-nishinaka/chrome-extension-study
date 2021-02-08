@@ -63,10 +63,10 @@ chrome.commands.onCommand.addListener((command) => {
   switch (command) {
     case 'save_url_and_title':
       saveUrlAndTitle();
-      break
+      break;
     case 'save_url_and_title_for_markdown':
       saveUrlAndTitleForMarkDown();
-      break
+      break;
     default:
       break;
   }
