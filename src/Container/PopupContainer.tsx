@@ -19,6 +19,7 @@ interface Props {}
 interface State {
   storage: Storage;
 }
+
 export default class PopupContainer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);

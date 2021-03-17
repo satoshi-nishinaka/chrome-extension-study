@@ -1,25 +1,25 @@
 import * as React from 'react';
 
-interface Props {
+interface TabEntryProps {
   title: string;
   identify: string;
   active: boolean;
 }
 
-interface State {
+interface TabEntryState {
   title?: string;
   identify?: string;
   active?: boolean;
 }
 
-export default class TabEntry extends React.Component<Props, State> {
-  state: State = {
+export default class TabEntry extends React.Component<TabEntryProps, TabEntryState> {
+  state: TabEntryState = {
     title: '',
     identify: '',
     active: false,
   };
 
-  constructor(props: Props) {
+  constructor(props: TabEntryProps) {
     super(props);
     this.state = {
       title: props.title,

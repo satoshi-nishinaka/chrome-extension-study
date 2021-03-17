@@ -2,23 +2,23 @@ import * as React from 'react';
 import { transitionToNextPage } from '../Functions/Transition';
 import { Storage } from '../Storage';
 
-interface Props {
+interface LinkButtonProps {
   text: string;
   url: string;
 }
 
-interface State {
+interface LinkButtonState {
   url?: string;
   text?: string;
 }
 
-export default class LinkButton extends React.Component<Props, State> {
-  state: State = {
+export default class LinkButton extends React.Component<LinkButtonProps, LinkButtonState> {
+  state: LinkButtonState = {
     url: '',
     text: '',
   };
 
-  constructor(props: Props) {
+  constructor(props: LinkButtonProps) {
     super(props);
     this.state = {
       url: props.url,

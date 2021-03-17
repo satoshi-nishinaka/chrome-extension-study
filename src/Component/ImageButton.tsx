@@ -2,26 +2,26 @@ import * as React from 'react';
 import { Storage } from '../Storage';
 import { transitionToNextPage } from '../Functions/Transition';
 
-interface Props {
+interface ImageButtonProps {
   title: string;
   image: string;
   url: string;
 }
 
-interface State {
+interface ImageButtonState {
   image?: string;
   title?: string;
   url?: string;
 }
 
-export default class ImageButton extends React.Component<Props, State> {
-  state: State = {
+export default class ImageButton extends React.Component<ImageButtonProps, ImageButtonState> {
+  state: ImageButtonState = {
     title: '',
     image: '',
     url: '',
   };
 
-  constructor(props: Props) {
+  constructor(props: ImageButtonProps) {
     super(props);
     this.state = {
       title: props.title,

@@ -1,13 +1,13 @@
 import { Storage } from '../Storage';
 import CardContainer from '../Container/CardContainer';
 import * as React from 'react';
-import * as $ from 'jquery';
 
 interface SettingSectionProps {
   storage: Storage;
 }
 interface State {
   storage: Storage;
+  isOpenNewTab: boolean;
 }
 
 export class SettingSection extends React.Component<
@@ -16,30 +16,20 @@ export class SettingSection extends React.Component<
 > {
   state: State = {
     storage: null,
+    isOpenNewTab: false,
   };
   constructor(props: SettingSectionProps) {
     super(props);
     this.state = {
       storage: props.storage,
+      isOpenNewTab: false,
     };
   }
   componentDidMount(): void {
     // LocalStorageから設定情報を取得
     this.state.storage.readValues(() => {
-      $('#btn_newtab').prop('checked', this.state.storage.isOpenNewTab);
-
-      chrome.tabs.getSelected(null, (tab) => {
-        let pageMeta = `${tab.title}\n${tab.url}`;
-        if (tab.favIconUrl) {
-          $('textarea#favicon-url').val(tab.favIconUrl);
-          pageMeta += '\n' + tab.favIconUrl;
-        }
-        $('textarea#url').val(tab.url);
-        $('textarea#title').val(tab.title);
-        $('#page-meta').val(pageMeta);
-      });
-      chrome.tabs.query({}, (results) => {
-        $('#information').html(results.length.toString());
+      this.setState({
+        isOpenNewTab: this.state.storage.isOpenNewTab,
       });
     });
   }
@@ -49,7 +39,18 @@ export class SettingSection extends React.Component<
       <CardContainer>
         <div className="form-row px-2">
           <label>
-            <input type="checkbox" id="btn_newtab" />
+            <input
+              name="isOpenNewTab"
+              type="checkbox"
+              checked={this.state.storage.isOpenNewTab}
+              onChange={(event => {
+                this.state.isOpenNewTab = this.state.storage.isOpenNewTab = event.target.checked
+                this.setState({
+                  isOpenNewTab: event.target.checked,
+                });
+                this.state.storage.saveValues();
+              })}
+            />
             <span className="label-info">新しいタブで開く</span>
           </label>
         </div>
