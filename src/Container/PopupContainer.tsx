@@ -6,14 +6,28 @@ import TabContainer from './TabContainer';
 import LinkButton from '../Component/LinkButton';
 import PageInformationSection from '../Section/PageInformationSection';
 import ToolsSection from '../Section/ToolsSection';
-import {SNSLinksSection} from "../Section/ShortCutLinks/SNSLinksSection";
-import {MediaLinksSection} from "../Section/ShortCutLinks/MediaLinksSection";
-import {NewsLinksSection} from "../Section/ShortCutLinks/NewsLinksSection";
-import {GourmetLinksSection} from "../Section/ShortCutLinks/GourmetLinksSection";
-import {FinTechLinksSection} from "../Section/ShortCutLinks/FinTechLinksSection";
+import { SNSLinksSection } from '../Section/ShortCutLinks/SNSLinksSection';
+import { MediaLinksSection } from '../Section/ShortCutLinks/MediaLinksSection';
+import { NewsLinksSection } from '../Section/ShortCutLinks/NewsLinksSection';
+import { GourmetLinksSection } from '../Section/ShortCutLinks/GourmetLinksSection';
+import { FinTechLinksSection } from '../Section/ShortCutLinks/FinTechLinksSection';
+import { SettingSection } from '../Section/SettingSection';
+import { Storage } from '../Storage';
 
-export default class PopupContainer extends React.Component {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
+interface State {
+  storage: Storage;
+}
+export default class PopupContainer extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      storage: new Storage(),
+    };
+  }
   render(): JSX.Element {
+    const storage = this.state.storage;
     return (
       <div className="form-group">
         <section>
@@ -47,14 +61,7 @@ export default class PopupContainer extends React.Component {
               <PageInformationSection />
             </TabContainer>
             <TabContainer active={false} identify="settings" title="Settings">
-              <CardContainer>
-                <div className="form-row px-2">
-                  <label>
-                    <input type="checkbox" id="btn_newtab" />
-                    <span className="label-info">新しいタブで開く</span>
-                  </label>
-                </div>
-              </CardContainer>
+              <SettingSection storage={storage} />
             </TabContainer>
             <TabContainer active={false} identify="about" title="About">
               <CardContainer title={null} className="text-center">
