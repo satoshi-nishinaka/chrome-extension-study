@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import TabEntry from '../Component/TabEntry';
-import TabContainer from './TabContainer';
+import { TabContainer } from './TabContainer';
 import LinkButton from '../Component/LinkButton';
 import PageInformationSection from '../Section/PageInformationSection';
 import ToolsSection from '../Section/ToolsSection';
