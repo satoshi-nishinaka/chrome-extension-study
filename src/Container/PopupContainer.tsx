@@ -9,6 +9,8 @@ import ReloadAllTabsButton from "../FunctionalButton/ReloadAllTabsButton";
 import CloseDuplicateTabButton from "../FunctionalButton/CloseDuplicateTabButton";
 import CopyToClipBoardAllTabUrlButton from "../FunctionalButton/CopyToClipBoardAllTabUrlButton";
 import CopyToClipBoardButton from "../FunctionalButton/CopyToClipBoardButton";
+import PageInformationSection from "../Section/PageInformationSection";
+import ToolsSection from "../Section/ToolsSection";
 
 export default class PopupContainer extends React.Component {
   render(): JSX.Element {
@@ -125,43 +127,14 @@ export default class PopupContainer extends React.Component {
               </CardContainer>
             </TabContainer>
             <TabContainer active={false} identify="tools" title="Tools">
-              <CardContainer title="テキストエリアのURLをすべて開く">
-                <textarea
-                  rows={5}
-                  id="referer"
-                  className="form-control mx-auto"
-                />
-                <button
-                  className="btn btn-primary btn-sm w-100 mt-2"
-                  id="open-by-text"
-                >
-                  URLを開く
-                </button>
-              </CardContainer>
-              <div className="card mt-3 p-2">
-                <CopyToClipBoardButton />
-                <CopyToClipBoardAllTabUrlButton />
-                <ReloadAllTabsButton />
-                <CloseDuplicateTabButton />
-              </div>
+              <ToolsSection />
             </TabContainer>
             <TabContainer
               active={false}
               identify="page-information"
               title="Page Information"
             >
-              <CardContainer title="☆Favicon★">
-                <textarea id="favicon-url" className="form-control" />
-              </CardContainer>
-              <CardContainer title="☆Title★">
-                <textarea id="title" className="form-control" />
-              </CardContainer>
-              <CardContainer title="☆URL★">
-                <textarea id="url" className="form-control" />
-              </CardContainer>
-              <CardContainer title="☆All★">
-                <textarea id="page-meta" className="form-control" rows={3} />
-              </CardContainer>
+              <PageInformationSection />
             </TabContainer>
             <TabContainer active={false} identify="settings" title="Settings">
               <CardContainer>

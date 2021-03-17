@@ -10,10 +10,6 @@ export default class OpenByTextButton extends React.Component<Props, State> {
     text: '',
   };
 
-  constructor(props: Props) {
-    super(props);
-  }
-
   handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
     this.setState({
       text: event.target.value,
@@ -40,7 +36,7 @@ export default class OpenByTextButton extends React.Component<Props, State> {
           value={this.state.text}
         />
         <button
-          className="btn btn-green btn-sm w-100 mt-2"
+          className="btn btn-primary btn-sm w-100 mt-2"
           onClick={this.execute}
         >
           URLを開く

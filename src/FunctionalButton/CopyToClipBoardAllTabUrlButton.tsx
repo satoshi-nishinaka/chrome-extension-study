@@ -17,7 +17,7 @@ export default class CopyToClipBoardAllTabUrlButton extends React.Component {
 
   render(): JSX.Element {
     return (
-      <button className="btn btn-blue btn-sm w-100" onClick={this.execute}>
+      <button className="btn btn-secondary btn-sm w-100" onClick={this.execute}>
         開いているすべてのタブのURLをクリップボードにコピーする
       </button>
     );

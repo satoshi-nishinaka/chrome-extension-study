@@ -10,7 +10,7 @@ export default class CloseDuplicateTabButton extends React.Component {
 
   render(): JSX.Element {
     return (
-      <button className="btn btn-orange btn-sm w-100" onClick={this.execute}>
+      <button className="btn btn-secondary btn-sm w-100" onClick={this.execute}>
         重複するタブを閉じる
       </button>
     );
