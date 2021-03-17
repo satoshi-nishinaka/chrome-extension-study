@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { unique } from '../Function/Unique';
+import { unique } from '../Functions/Unique';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 interface State {

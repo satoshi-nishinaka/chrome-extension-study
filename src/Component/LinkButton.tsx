@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { transitionToNextPage } from '../Functions/Transition';
-import {Storage} from "../Storage";
+import { Storage } from '../Storage';
 
 interface Props {
   text: string;

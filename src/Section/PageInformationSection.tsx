@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CardContainer from "../Container/CardContainer";
+import CardContainer from '../Container/CardContainer';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

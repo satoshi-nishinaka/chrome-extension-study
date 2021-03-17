@@ -3,13 +3,13 @@ import * as React from 'react';
 interface Props {
   title?: string;
   className?: string;
-  cardBodyClassName?: string
+  cardBodyClassName?: string;
 }
 
 interface State {
   title?: string;
   className?: string;
-  cardBodyClassName?: string
+  cardBodyClassName?: string;
 }
 
 export default class CardContainer extends React.Component<Props, State> {
@@ -23,8 +23,8 @@ export default class CardContainer extends React.Component<Props, State> {
   }
   render(): JSX.Element {
     const cardBodyClass =
-        'card-body' +
-        (this.props.cardBodyClassName ? ` ${this.props.cardBodyClassName}` : '');
+      'card-body' +
+      (this.props.cardBodyClassName ? ` ${this.props.cardBodyClassName}` : '');
     return (
       <article className="card">
         {this.state.title && (
