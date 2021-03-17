@@ -24,18 +24,17 @@ export default class LinkButton extends React.Component<Props, State> {
       url: props.url,
       text: props.text,
     };
-    this.transitionTo = this.transitionTo.bind(this);
   }
 
-  transitionTo() {
+  transitionTo = (): void => {
     const storage = new LocalStorage();
     storage.readValues(() => {
       const url = this.state.url;
       transitionToNextPage(url, storage.isOpenNewTab);
-    })
-  }
+    });
+  };
 
-  render() {
+  render(): JSX.Element {
     return (
       <button className="btn btn-primary w-80" onClick={this.transitionTo}>
         {this.state.text}

@@ -9,7 +9,7 @@
     "clean": "rimraf dist",
     "test": "npx jest",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix "
+    "lint:fix": "eslint --fix src"
   },
   "author": "satoshi-nishinaka",
   "license": "MIT",

@@ -28,7 +28,7 @@ export default class TabEntry extends React.Component<Props, State> {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     const href = `#${this.state.identify}`;
     const className = 'nav-link' + (this.state.active ? ' active' : '');
     return (

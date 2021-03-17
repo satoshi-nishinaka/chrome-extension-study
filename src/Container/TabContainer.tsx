@@ -22,7 +22,7 @@ export default class TabContainer extends React.Component<Props, State> {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     const className =
       'tab-pane fade show' + (this.state.active ? ' active' : '');
     return (

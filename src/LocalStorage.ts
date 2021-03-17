@@ -15,7 +15,7 @@ export class LocalStorage {
       console.log(`hiddenShortcutMenu ${this.hiddenShortcutMenu}`);
 
       callBack();
-    })
+    });
   }
 
   /**

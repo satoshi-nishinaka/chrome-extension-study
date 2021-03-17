@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import CardContainer from './CardContainer';
 import ImageButton from '../Component/ImageButton';
 import TabEntry from '../Component/TabEntry';
@@ -7,7 +7,7 @@ import TabContainer from './TabContainer';
 import LinkButton from '../Component/LinkButton';
 
 export default class PopupContainer extends React.Component {
-  render() {
+  render(): JSX.Element {
     return (
       <div className="form-group">
         <section>

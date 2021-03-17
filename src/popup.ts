@@ -19,15 +19,15 @@ $(() => {
       $('textarea#url').val(tab.url);
       $('textarea#title').val(tab.title);
       $('#page-meta').val(pageMeta);
-    })
+    });
     chrome.tabs.query({}, (results) => {
       $('#information').html(results.length.toString());
-    })
+    });
   });
 
   $('[data-toggle="tooltip"]').tooltip();
 
-  $('#copy-to-clipboard').on('click', (event) => {
+  $('#copy-to-clipboard').on('click', () => {
     chrome.tabs.getSelected(null, function (tab) {
       const textArea = document.createElement('textarea');
       textArea.value = `${tab.title}\n${tab.url}`;
@@ -37,10 +37,10 @@ $(() => {
       document.execCommand('copy');
 
       document.body.removeChild(textArea);
-    })
+    });
   });
 
-  $('#all-copy-to-clipboard').on('click', (event) => {
+  $('#all-copy-to-clipboard').on('click', () => {
     chrome.tabs.query({}, (results) => {
       const tabUrls = [];
       for (const tab of results) {
@@ -54,17 +54,17 @@ $(() => {
       document.execCommand('copy');
 
       document.body.removeChild(textArea);
-    })
+    });
   });
 
-  $('#reload-all-tabs').on('click', (event) => {
+  $('#reload-all-tabs').on('click', () => {
     chrome.tabs.query({}, (result) => {
       for (const tab of result) {
         chrome.tabs.reload(tab.id);
       }
     });
-  })
-  $('#open-by-text').on('click', (event) => {
+  });
+  $('#open-by-text').on('click', () => {
     const text = $('#referer').val().toString();
     const lines = unique(text.split('\n'));
     for (const line of lines) {
@@ -82,13 +82,28 @@ $(() => {
     switch (id) {
       case 'btn_newtab':
         storage.isOpenNewTab = value;
-        break
+        break;
       case 'btn_hidden_shortcut_menu':
         storage.hiddenShortcutMenu = value;
-        break
+        break;
       default:
         break;
     }
     storage.saveValues();
-  })
+  });
 });
+
+function unique(array: string[]): string[] {
+  // JavaScriptのArrayでuniqする8つの方法（と、その中で最速の方法） - Qiita
+  // https://qiita.com/piroor/items/02885998c9f76f45bfa0#object%E3%81%AE%E3%82%AD%E3%83%BC%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95
+  const knownElements = {};
+  const uniquedArray = [];
+  for (let i = 0, maxi = array.length; i < maxi; i++) {
+    if (array[i] in knownElements) {
+      continue;
+    }
+    uniquedArray.push(array[i]);
+    knownElements[array[i]] = true;
+  }
+  return uniquedArray;
+}

@@ -28,19 +28,18 @@ export default class ImageButton extends React.Component<Props, State> {
       image: props.image,
       url: props.url,
     };
-    this.transitionTo = this.transitionTo.bind(this);
   }
 
-  transitionTo() {
+  transitionTo = (): void => {
     const storage = new LocalStorage();
     storage.readValues(() => {
       const url = this.state.url;
       transitionToNextPage(url, storage.isOpenNewTab);
       window.close();
-    })
-  }
+    });
+  };
 
-  render() {
+  render(): JSX.Element {
     return (
       <button
         data-toggle="tooltip"

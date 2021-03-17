@@ -18,9 +18,9 @@ export default class CardContainer extends React.Component<Props, State> {
       className: props.className,
     };
   }
-  render() {
+  render(): JSX.Element {
     const bodiesClassName =
-      'card-body' + (this.state.className ? ` ${this.state.className}` : '')
+      'card-body' + (this.state.className ? ` ${this.state.className}` : '');
     return (
       <article className="card">
         {this.state.title && (
