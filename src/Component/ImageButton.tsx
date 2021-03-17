@@ -14,7 +14,10 @@ interface ImageButtonState {
   url?: string;
 }
 
-export default class ImageButton extends React.Component<ImageButtonProps, ImageButtonState> {
+export default class ImageButton extends React.Component<
+  ImageButtonProps,
+  ImageButtonState
+> {
   state: ImageButtonState = {
     title: '',
     image: '',

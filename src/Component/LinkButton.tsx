@@ -12,7 +12,10 @@ interface LinkButtonState {
   text?: string;
 }
 
-export default class LinkButton extends React.Component<LinkButtonProps, LinkButtonState> {
+export default class LinkButton extends React.Component<
+  LinkButtonProps,
+  LinkButtonState
+> {
   state: LinkButtonState = {
     url: '',
     text: '',

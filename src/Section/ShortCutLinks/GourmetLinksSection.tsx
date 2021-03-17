@@ -1,4 +1,4 @@
-import CardContainer from '../../Container/CardContainer';
+import { CardContainer } from '../../Container/CardContainer';
 import ImageButton from '../../Component/ImageButton';
 import * as React from 'react';
 

@@ -1,5 +1,5 @@
 import ImageButton from '../../Component/ImageButton';
-import CardContainer from '../../Container/CardContainer';
+import { CardContainer } from '../../Container/CardContainer';
 import * as React from 'react';
 
 export function SNSLinksSection(): JSX.Element {

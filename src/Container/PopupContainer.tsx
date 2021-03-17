@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import CardContainer from './CardContainer';
 import TabEntry from '../Component/TabEntry';
 import TabContainer from './TabContainer';
 import LinkButton from '../Component/LinkButton';
@@ -13,6 +12,7 @@ import { GourmetLinksSection } from '../Section/ShortCutLinks/GourmetLinksSectio
 import { FinTechLinksSection } from '../Section/ShortCutLinks/FinTechLinksSection';
 import { SettingSection } from '../Section/SettingSection';
 import { Storage } from '../Storage';
+import { CardContainer } from './CardContainer';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -65,7 +65,7 @@ export default class PopupContainer extends React.Component<Props, State> {
               <SettingSection storage={storage} />
             </TabContainer>
             <TabContainer active={false} identify="about" title="About">
-              <CardContainer title={null} className="text-center">
+              <CardContainer title={null} cardClassName="text-center">
                 <LinkButton
                   text="GitHub"
                   url="https://github.com/satoshi-nishinaka/chrome-extension-study"

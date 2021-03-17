@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CardContainer from '../Container/CardContainer';
+import { CardContainer } from '../Container/CardContainer';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -40,7 +40,7 @@ export default class PageInformationSection extends React.Component<
       <>
         <CardContainer
           title="☆Favicon★"
-          className="m-2"
+          cardClassName="m-2"
           cardBodyClassName="mx-2"
         >
           <textarea
@@ -49,17 +49,29 @@ export default class PageInformationSection extends React.Component<
             value={this.state.favicon}
           />
         </CardContainer>
-        <CardContainer title="☆Title★" className="m-2" cardBodyClassName="mx-2">
+        <CardContainer
+          title="☆Title★"
+          cardClassName="m-2"
+          cardBodyClassName="mx-2"
+        >
           <textarea
             className="form-control"
             readOnly
             value={this.state.title}
           />
         </CardContainer>
-        <CardContainer title="☆URL★" className="m-2" cardBodyClassName="mx-2">
+        <CardContainer
+          title="☆URL★"
+          cardClassName="m-2"
+          cardBodyClassName="mx-2"
+        >
           <textarea className="form-control" readOnly value={this.state.url} />
         </CardContainer>
-        <CardContainer title="☆All★" className="m-2" cardBodyClassName="mx-2">
+        <CardContainer
+          title="☆All★"
+          cardClassName="m-2"
+          cardBodyClassName="mx-2"
+        >
           <textarea
             className="form-control"
             rows={3}

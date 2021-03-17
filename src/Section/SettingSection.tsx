@@ -1,5 +1,5 @@
 import { Storage } from '../Storage';
-import CardContainer from '../Container/CardContainer';
+import { CardContainer } from '../Container/CardContainer';
 import * as React from 'react';
 
 interface SettingSectionProps {
@@ -43,13 +43,14 @@ export class SettingSection extends React.Component<
               name="isOpenNewTab"
               type="checkbox"
               checked={this.state.storage.isOpenNewTab}
-              onChange={(event => {
-                this.state.isOpenNewTab = this.state.storage.isOpenNewTab = event.target.checked
+              onChange={(event) => {
+                this.state.isOpenNewTab = this.state.storage.isOpenNewTab =
+                  event.target.checked;
                 this.setState({
                   isOpenNewTab: event.target.checked,
                 });
                 this.state.storage.saveValues();
-              })}
+              }}
             />
             <span className="label-info">新しいタブで開く</span>
           </label>

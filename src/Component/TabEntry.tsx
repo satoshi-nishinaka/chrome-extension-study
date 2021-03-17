@@ -12,7 +12,10 @@ interface TabEntryState {
   active?: boolean;
 }
 
-export default class TabEntry extends React.Component<TabEntryProps, TabEntryState> {
+export default class TabEntry extends React.Component<
+  TabEntryProps,
+  TabEntryState
+> {
   state: TabEntryState = {
     title: '',
     identify: '',
