@@ -5,6 +5,10 @@ import ImageButton from '../Component/ImageButton';
 import TabEntry from '../Component/TabEntry';
 import TabContainer from './TabContainer';
 import LinkButton from '../Component/LinkButton';
+import ReloadAllTabsButton from "../FunctionalButton/ReloadAllTabsButton";
+import CloseDuplicateTabButton from "../FunctionalButton/CloseDuplicateTabButton";
+import CopyToClipBoardAllTabUrlButton from "../FunctionalButton/CopyToClipBoardAllTabUrlButton";
+import CopyToClipBoardButton from "../FunctionalButton/CopyToClipBoardButton";
 
 export default class PopupContainer extends React.Component {
   render(): JSX.Element {
@@ -135,30 +139,10 @@ export default class PopupContainer extends React.Component {
                 </button>
               </CardContainer>
               <div className="card mt-3 p-2">
-                <button
-                  className="btn btn-secondary btn-sm w-100"
-                  id="copy-to-clipboard"
-                >
-                  現在アクティブなタブのURLをクリップボードにコピーする
-                </button>
-                <button
-                  className="btn btn-secondary btn-sm w-100"
-                  id="all-copy-to-clipboard"
-                >
-                  開いているすべてのタブのURLをクリップボードにコピーする
-                </button>
-                <button
-                  className="btn btn-secondary btn-sm w-100"
-                  id="reload-all-tabs"
-                >
-                  開いているタブをすべてリロードする
-                </button>
-                <button
-                  className="btn btn-secondary btn-sm w-100"
-                  id="close-duplicate-tabs"
-                >
-                  重複するタブを閉じる
-                </button>
+                <CopyToClipBoardButton />
+                <CopyToClipBoardAllTabUrlButton />
+                <ReloadAllTabsButton />
+                <CloseDuplicateTabButton />
               </div>
             </TabContainer>
             <TabContainer
@@ -204,6 +188,7 @@ export default class PopupContainer extends React.Component {
   }
 }
 
-if (document.getElementById('root')) {
-  ReactDOM.render(<PopupContainer />, document.getElementById('root'));
+const root = document.getElementById('root')
+if (root) {
+  ReactDOM.render(<PopupContainer />, root);
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { LocalStorage } from '../LocalStorage';
 import { transitionToNextPage } from '../Functions/Transition';
+import {Storage} from "../Storage";
 
 interface Props {
   text: string;
@@ -27,7 +27,7 @@ export default class LinkButton extends React.Component<Props, State> {
   }
 
   transitionTo = (): void => {
-    const storage = new LocalStorage();
+    const storage = new Storage();
     storage.readValues(() => {
       const url = this.state.url;
       transitionToNextPage(url, storage.isOpenNewTab);

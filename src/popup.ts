@@ -1,11 +1,11 @@
 import * as $ from 'jquery';
-import { LocalStorage } from './LocalStorage';
+import { Storage } from './Storage';
 require('jquery');
 require('jquery-ui/ui/widgets/tooltip.js');
 require('bootstrap');
 
 $(() => {
-  const storage = new LocalStorage();
+  const storage = new Storage();
   // LocalStorageから設定情報を取得
   storage.readValues(() => {
     $('#btn_newtab').prop('checked', storage.isOpenNewTab);
@@ -27,43 +27,6 @@ $(() => {
 
   $('[data-toggle="tooltip"]').tooltip();
 
-  $('#copy-to-clipboard').on('click', () => {
-    chrome.tabs.getSelected(null, function (tab) {
-      const textArea = document.createElement('textarea');
-      textArea.value = `${tab.title}\n${tab.url}`;
-      document.body.appendChild(textArea);
-
-      textArea.select();
-      document.execCommand('copy');
-
-      document.body.removeChild(textArea);
-    });
-  });
-
-  $('#all-copy-to-clipboard').on('click', () => {
-    chrome.tabs.query({}, (results) => {
-      const tabUrls = [];
-      for (const tab of results) {
-        tabUrls.push(tab.url);
-      }
-      const textArea = document.createElement('textarea');
-      textArea.value = tabUrls.join('\n');
-      document.body.appendChild(textArea);
-
-      textArea.select();
-      document.execCommand('copy');
-
-      document.body.removeChild(textArea);
-    });
-  });
-
-  $('#reload-all-tabs').on('click', () => {
-    chrome.tabs.query({}, (result) => {
-      for (const tab of result) {
-        chrome.tabs.reload(tab.id);
-      }
-    });
-  });
   $('#open-by-text').on('click', () => {
     const text = $('#referer').val().toString();
     const lines = unique(text.split('\n'));
