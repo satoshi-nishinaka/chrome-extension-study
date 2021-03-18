@@ -21,10 +21,7 @@
     "rules": {
         "semi": [
             "error",
-            "never",
-            {
-                "beforeStatementContinuationChars": "never"
-            }
+            "always"
         ],
         "semi-spacing": [
             "error",
@@ -35,7 +32,7 @@
         ],
         "semi-style": [
             "error",
-            "first"
+            "last"
         ],
         "no-extra-semi": "error",
         "no-unexpected-multiline": "error",

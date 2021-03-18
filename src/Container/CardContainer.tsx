@@ -1,30 +1,24 @@
 import * as React from 'react';
 
-interface Props {
-  title: string;
-}
-
-interface State {
+interface CardContainerProps {
   title?: string;
+  cardClassName?: string;
+  cardBodyClassName?: string;
 }
 
-export default class CardContainer extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      title: props.title,
-    };
-  }
-  render() {
-    return (
-      <article className="card">
-        <h6 className="card-header">{this.state.title}</h6>
-        <div className="card-body">
-          {React.Children.map(this.props.children, (child) => {
-            return child;
-          })}
-        </div>
-      </article>
-    );
-  }
-}
+export const CardContainer: React.FC<CardContainerProps> = ({
+  title,
+  cardClassName,
+  cardBodyClassName,
+  children,
+}) => {
+  const cardClass = 'card' + (cardClassName ? ` ${cardClassName}` : '');
+  const cardBodyClass =
+    'card-body' + (cardBodyClassName ? ` ${cardBodyClassName}` : '');
+  return (
+    <article className={cardClass}>
+      {title && <h6 className="card-header">{title}</h6>}
+      <div className={cardBodyClass}>{children}</div>
+    </article>
+  );
+};

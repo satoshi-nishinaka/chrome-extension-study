@@ -1,10 +1,10 @@
-export class LocalStorage {
+export class Storage {
   public isOpenNewTab = false;
   public hiddenShortcutMenu = false;
 
   readValues(callBack: () => void): void {
     const values = ['isOpenNewTab', 'hiddenShortcutMenu'];
-    chrome.storage.local.get(values, (items) => {
+    chrome.storage.sync.get(values, (items) => {
       // LocalStorageから設定情報を取得
       console.log(items);
 
@@ -15,7 +15,7 @@ export class LocalStorage {
       console.log(`hiddenShortcutMenu ${this.hiddenShortcutMenu}`);
 
       callBack();
-    })
+    });
   }
 
   /**
@@ -23,7 +23,7 @@ export class LocalStorage {
    */
   saveValues(): void {
     console.log('saveValuesForLocalStorage -----');
-    chrome.storage.local.set({
+    chrome.storage.sync.set({
       isOpenNewTab: this.isOpenNewTab,
       hiddenShortcutMenu: this.hiddenShortcutMenu,
     });

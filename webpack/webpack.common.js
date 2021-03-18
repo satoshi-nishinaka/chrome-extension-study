@@ -54,5 +54,6 @@ module.exports = {
             patterns: [{ from: '.', to: '../', context: 'public' }],
             options: {}
         }),
-    ]
+    ],
+    performance: { hints: false }
 };
