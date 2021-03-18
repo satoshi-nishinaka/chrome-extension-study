@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CardContainer } from '../Container/CardContainer';
 import OpenByTextButton from '../FunctionalButton/OpenByTextButton';
-import CopyToClipBoardButton from '../FunctionalButton/CopyToClipBoardButton';
-import CopyToClipBoardAllTabUrlButton from '../FunctionalButton/CopyToClipBoardAllTabUrlButton';
+import { CopyToClipBoardButton } from '../FunctionalButton/CopyToClipBoardButton';
+import { CopyToClipBoardAllTabUrlButton } from '../FunctionalButton/CopyToClipBoardAllTabUrlButton';
 import ReloadAllTabsButton from '../FunctionalButton/ReloadAllTabsButton';
 import CloseDuplicateTabButton from '../FunctionalButton/CloseDuplicateTabButton';
 
