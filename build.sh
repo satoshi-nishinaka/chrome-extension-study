@@ -1,6 +1,8 @@
 #!/bin/bash
-rm -fr ShortCutExtension ShortCutExtension.zip dist
+git checkout dist
+rm -fr ShortCutExtension ShortCutExtension.zip
 npm install
 npm run build
-cp -R dist ShortCutExtension
+cp -r dist ShortCutExtension
+rm ShortCutExtension/git.keep
 zip -r ShortCutExtension.zip ShortCutExtension
