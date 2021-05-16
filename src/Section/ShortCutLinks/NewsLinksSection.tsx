@@ -17,7 +17,7 @@ export function NewsLinksSection(): JSX.Element {
       />
       <ImageButton
         title="花粉飛散情報 2021 - 日本気象協会 tenki.jp"
-        imate="https://tenki.jp/favicon.ico"
+        image="https://tenki.jp/favicon.ico"
         url="https://tenki.jp/pollen/"
       />
     </CardContainer>
