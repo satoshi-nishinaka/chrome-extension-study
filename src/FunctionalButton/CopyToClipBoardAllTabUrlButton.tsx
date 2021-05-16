@@ -1,5 +1,5 @@
 import * as React from 'react';
-export function CopyToClipBoardAllTabUrlButton(): JSX.Element {
+export default function CopyToClipBoardAllTabUrlButton(): JSX.Element {
   const execute = (): void => {
     chrome.tabs.query({}, (results) => {
       const tabUrls = [];

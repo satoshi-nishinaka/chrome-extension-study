@@ -1,5 +1,5 @@
 import * as React from 'react';
-export function CopyToClipBoardButton(): JSX.Element {
+export default function CopyToClipBoardButton(): JSX.Element {
   const execute = (): void => {
     chrome.tabs.getSelected(null, (tab) => {
       const textArea = document.createElement('textarea');

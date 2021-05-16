@@ -1,20 +1,18 @@
 import * as React from 'react';
-export default class CloseDuplicateTabButton extends React.Component {
-  execute(): void {
+export default function CloseDuplicateTabButton(): JSX.Element {
+  const execute = (): void => {
     if (confirm('重複するタブを閉じます\nよろしいですか？？')) {
       if (closeDuplicateTabs()) {
         alert('重複するタブを閉じました');
       }
     }
-  }
+  };
 
-  render(): JSX.Element {
-    return (
-      <button className="btn btn-secondary btn-sm w-100" onClick={this.execute}>
-        重複するタブを閉じる
-      </button>
-    );
-  }
+  return (
+    <button className="btn btn-secondary btn-sm w-100" onClick={execute}>
+      重複するタブを閉じる
+    </button>
+  );
 }
 
 /**

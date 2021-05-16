@@ -1,8 +1,8 @@
+import * as React from 'react';
 import { CardContainer } from '../../Container/CardContainer';
 import ImageButton from '../../Component/ImageButton';
-import * as React from 'react';
 
-export function NewsLinksSection(): JSX.Element {
+export default function NewsLinksSection(): JSX.Element {
   return (
     <CardContainer title="☆News★">
       <ImageButton
