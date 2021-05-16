@@ -1,8 +1,8 @@
+import * as React from 'react';
 import { CardContainer } from '../../Container/CardContainer';
 import ImageButton from '../../Component/ImageButton';
-import * as React from 'react';
 
-export function GourmetLinksSection(): JSX.Element {
+export default function GourmetLinksSection(): JSX.Element {
   return (
     <CardContainer title="☆Gourmet★">
       <ImageButton

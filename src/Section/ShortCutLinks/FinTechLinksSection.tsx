@@ -1,8 +1,8 @@
+import * as React from 'react';
 import { CardContainer } from '../../Container/CardContainer';
 import ImageButton from '../../Component/ImageButton';
-import * as React from 'react';
 
-export function FinTechLinksSection(): JSX.Element {
+export default function FinTechLinksSection(): JSX.Element {
   return (
     <CardContainer title="☆Fin-tech★">
       <ImageButton

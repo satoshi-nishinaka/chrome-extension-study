@@ -1,8 +1,8 @@
+import * as React from 'react';
 import ImageButton from '../../Component/ImageButton';
 import { CardContainer } from '../../Container/CardContainer';
-import * as React from 'react';
 
-export function SNSLinksSection(): JSX.Element {
+export default function SNSLinksSection(): JSX.Element {
   return (
     <CardContainer title="☆SNS★">
       <ImageButton

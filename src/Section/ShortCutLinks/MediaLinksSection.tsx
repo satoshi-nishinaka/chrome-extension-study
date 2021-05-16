@@ -1,8 +1,8 @@
+import * as React from 'react';
 import { CardContainer } from '../../Container/CardContainer';
 import ImageButton from '../../Component/ImageButton';
-import * as React from 'react';
 
-export function MediaLinksSection(): JSX.Element {
+export default function MediaLinksSection(): JSX.Element {
   return (
     <CardContainer title="☆Tools★">
       <ImageButton
