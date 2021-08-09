@@ -8,7 +8,7 @@ interface ImageButtonProps {
   url: string;
 }
 
-export default function ImageButton(props: ImageButtonProps): JSX.Element {
+export const ImageButton = (props: ImageButtonProps): JSX.Element => {
   const { title, image, url } = props;
 
   const transitionTo = (): void => {
@@ -24,4 +24,4 @@ export default function ImageButton(props: ImageButtonProps): JSX.Element {
       <img src={image} alt={title} onClick={transitionTo} />
     </button>
   );
-}
+};

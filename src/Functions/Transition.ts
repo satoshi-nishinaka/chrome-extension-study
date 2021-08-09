@@ -3,7 +3,7 @@
  * @param url
  * @param newTab 新しいタブで開くか？
  */
-export function transitionToNextPage(url: string, newTab: boolean): void {
+export const transitionToNextPage = (url: string, newTab: boolean): void => {
   if (url === undefined) {
     return;
   }
@@ -19,4 +19,4 @@ export function transitionToNextPage(url: string, newTab: boolean): void {
     chrome.tabs.update(active, { url: url });
   });
   window.close();
-}
+};

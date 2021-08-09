@@ -1,5 +1,5 @@
 import * as React from 'react';
-export default function ReloadAllTabsButton(): JSX.Element {
+export const ReloadAllTabsButton = (): JSX.Element => {
   const execute = (): void => {
     chrome.tabs.query({}, (result) => {
       for (const tab of result) {
@@ -13,4 +13,4 @@ export default function ReloadAllTabsButton(): JSX.Element {
       開いているタブをすべてリロードする
     </button>
   );
-}
+};

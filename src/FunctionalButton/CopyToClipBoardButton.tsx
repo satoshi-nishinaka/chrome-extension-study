@@ -1,5 +1,5 @@
 import * as React from 'react';
-export default function CopyToClipBoardButton(): JSX.Element {
+export const CopyToClipBoardButton = (): JSX.Element => {
   const execute = (): void => {
     chrome.tabs.getSelected(null, (tab) => {
       const textArea = document.createElement('textarea');
@@ -16,4 +16,4 @@ export default function CopyToClipBoardButton(): JSX.Element {
       現在アクティブなタブのURLをクリップボードにコピーする
     </button>
   );
-}
+};

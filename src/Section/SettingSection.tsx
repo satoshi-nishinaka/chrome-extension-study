@@ -7,9 +7,7 @@ interface SettingSectionProps {
   storage: Storage;
 }
 
-export default function SettingSection(
-  props: SettingSectionProps
-): JSX.Element {
+export const SettingSection = (props: SettingSectionProps): JSX.Element => {
   const [storage] = useState(props.storage);
   const [isOpenNewTab, setIsOpenNewTab] = useState(false);
 
@@ -39,4 +37,4 @@ export default function SettingSection(
       </div>
     </CardContainer>
   );
-}
+};

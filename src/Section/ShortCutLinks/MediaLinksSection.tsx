@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CardContainer } from '../../Container/CardContainer';
-import ImageButton from '../../Component/ImageButton';
+import { ImageButton } from '../../Component/ImageButton';
 
-export default function MediaLinksSection(): JSX.Element {
+export const MediaLinksSection = (): JSX.Element => {
   return (
     <CardContainer title="☆Tools★">
       <ImageButton
@@ -22,4 +22,4 @@ export default function MediaLinksSection(): JSX.Element {
       />
     </CardContainer>
   );
-}
+};

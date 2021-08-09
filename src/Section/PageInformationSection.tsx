@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CardContainer } from '../Container/CardContainer';
 import { useEffect, useState } from 'react';
 
-export default function PageInformationSection(): JSX.Element {
+export const PageInformationSection = (): JSX.Element => {
   const [state, setState] = useState({
     title: '',
     url: '',
@@ -53,4 +53,4 @@ export default function PageInformationSection(): JSX.Element {
       </CardContainer>
     </>
   );
-}
+};

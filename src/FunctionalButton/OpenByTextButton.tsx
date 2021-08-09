@@ -2,7 +2,7 @@ import * as React from 'react';
 import { unique } from '../Functions/Unique';
 import { useState } from 'react';
 
-export default function OpenByTextButton(): JSX.Element {
+export const OpenByTextButton = (): JSX.Element => {
   const [text, setText] = useState('');
 
   const execute = (): void => {
@@ -28,4 +28,4 @@ export default function OpenByTextButton(): JSX.Element {
       </button>
     </>
   );
-}
+};

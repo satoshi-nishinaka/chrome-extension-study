@@ -7,7 +7,7 @@ interface LinkButtonProps {
   url: string;
 }
 
-export default function LinkButton(props: LinkButtonProps): JSX.Element {
+export const LinkButton = (props: LinkButtonProps): JSX.Element => {
   const { text, url } = props;
   const transitionTo = (): void => {
     const storage = new Storage();
@@ -21,4 +21,4 @@ export default function LinkButton(props: LinkButtonProps): JSX.Element {
       {text}
     </button>
   );
-}
+};

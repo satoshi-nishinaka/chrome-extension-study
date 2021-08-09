@@ -3,17 +3,17 @@ import * as ReactDOM from 'react-dom';
 import { useState } from 'react';
 import TabEntry from '../Component/TabEntry';
 import { TabContainer } from './TabContainer';
-import LinkButton from '../Component/LinkButton';
-import PageInformationSection from '../Section/PageInformationSection';
-import ToolsSection from '../Section/ToolsSection';
-import SNSLinksSection from '../Section/ShortCutLinks/SNSLinksSection';
-import MediaLinksSection from '../Section/ShortCutLinks/MediaLinksSection';
-import NewsLinksSection from '../Section/ShortCutLinks/NewsLinksSection';
-import GourmetLinksSection from '../Section/ShortCutLinks/GourmetLinksSection';
-import FinTechLinksSection from '../Section/ShortCutLinks/FinTechLinksSection';
-import SettingSection from '../Section/SettingSection';
+import { LinkButton } from '../Component/LinkButton';
 import { Storage } from '../Storage';
 import { CardContainer } from './CardContainer';
+import { FinTechLinksSection } from '../Section/ShortCutLinks/FinTechLinksSection';
+import { GourmetLinksSection } from '../Section/ShortCutLinks/GourmetLinksSection';
+import { MediaLinksSection } from '../Section/ShortCutLinks/MediaLinksSection';
+import { NewsLinksSection } from '../Section/ShortCutLinks/NewsLinksSection';
+import { PageInformationSection } from '../Section/PageInformationSection';
+import { SettingSection } from '../Section/SettingSection';
+import { SNSLinksSection } from '../Section/ShortCutLinks/SNSLinksSection';
+import { ToolsSection } from '../Section/ToolsSection';
 
 export default function PopupContainer(): JSX.Element {
   const [storage] = useState(new Storage());

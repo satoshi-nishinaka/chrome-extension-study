@@ -1,5 +1,5 @@
 import * as React from 'react';
-export default function CloseDuplicateTabButton(): JSX.Element {
+export const CloseDuplicateTabButton = (): JSX.Element => {
   const execute = (): void => {
     if (confirm('重複するタブを閉じます\nよろしいですか？？')) {
       if (closeDuplicateTabs()) {
@@ -13,12 +13,12 @@ export default function CloseDuplicateTabButton(): JSX.Element {
       重複するタブを閉じる
     </button>
   );
-}
+};
 
 /**
  * 重複するURLのタブを閉じます
  */
-function closeDuplicateTabs(): boolean {
+const closeDuplicateTabs = (): boolean => {
   let isClosed = false;
   chrome.tabs.query({}, (result) => {
     const urls = [];
@@ -35,4 +35,4 @@ function closeDuplicateTabs(): boolean {
     }
   });
   return isClosed;
-}
+};
