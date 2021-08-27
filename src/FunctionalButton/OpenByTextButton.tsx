@@ -6,7 +6,7 @@ export const OpenByTextButton = (): JSX.Element => {
   const [text, setText] = useState('');
 
   const execute = (): void => {
-    const lines = unique(this.state.text.split('\n'));
+    const lines = unique(text.split('\n'));
     for (const line of lines) {
       if (line.startsWith('http://') || line.startsWith('https://')) {
         chrome.tabs.create({

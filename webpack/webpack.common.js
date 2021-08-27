@@ -1,59 +1,82 @@
-const webpack = require("webpack")
-const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin')
-const srcDir = '../src/'
+const webpack = require('webpack');
+const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const enabledSourceMap =  process.env.NODE_ENV !== 'production';
+
+
+const srcDir = '../src/';
 
 module.exports = {
-    entry: {
-        popup: path.join(__dirname, srcDir + 'popup.ts'),
-        background: path.join(__dirname, srcDir + 'background.ts'),
-        style: path.join(__dirname, srcDir + 'style.scss'),
-        popupContainer: path.join(__dirname, srcDir + 'Container/PopupContainer'),
+  entry: {
+    popup: path.join(__dirname, srcDir + 'popup.ts'),
+    background: path.join(__dirname, srcDir + 'background.ts'),
+    style: path.join(__dirname, srcDir + 'style.scss'),
+    popupContainer: path.join(__dirname, srcDir + 'Container/PopupContainer'),
+  },
+  output: {
+    path: path.join(__dirname, '../dist/js'),
+    filename: '[name].js',
+  },
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial',
     },
-    output: {
-        path: path.join(__dirname, '../dist/js'),
-        filename: '[name].js'
-    },
-    optimization: {
-        splitChunks: {
-            name: 'vendor',
-            chunks: "initial"
-        }
-    },
-    module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        // Sassファイルの読み込みとコンパイル
+        use: [
+          // CSSファイルを抽出するように MiniCssExtractPlugin のローダーを指定
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          // CSSをバンドルするためのローダー
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              sourceMap: enabledSourceMap,
             },
-            {
-                test: /\.scss$/,
-                use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader", // translates CSS into CommonJS
-                    {
-                        loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default,
-                        options: {
-                            sassOptions: {
-                                outputStyle: 'expanded',
-                            },
-                        },
-                    }
-                ]
-            }
-        ]
-    },
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js']
-    },
-    plugins: [
-        // exclude locale files in moment
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-        new CopyPlugin({
-            patterns: [{ from: '.', to: '../', context: 'public' }],
-            options: {}
-        }),
+          },
+          // Sass を CSS へ変換するローダー
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                // fiber: require('fibers'),
+                fiber: false,
+              },
+              sourceMap: enabledSourceMap,
+            },
+          },
+        ],
+      },
     ],
-    performance: { hints: false }
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
+  plugins: [
+    // exclude locale files in moment
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
+    new CopyPlugin({
+      patterns: [{ from: '.', to: '../', context: 'public' }],
+      options: {},
+    }),
+  ],
+  devtool: "source-map",
+  performance: { hints: false },
 };
