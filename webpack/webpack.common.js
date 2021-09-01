@@ -11,7 +11,7 @@ module.exports = {
   entry: {
     popup: path.join(__dirname, srcDir + 'popup.ts'),
     background: path.join(__dirname, srcDir + 'background.ts'),
-    style: path.join(__dirname, srcDir + 'style.scss'),
+    style: path.join(__dirname, srcDir + 'scss/style.scss'),
     popupContainer: path.join(__dirname, srcDir + 'Container/PopupContainer'),
   },
   output: {
@@ -70,7 +70,7 @@ module.exports = {
     // exclude locale files in moment
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: '../css/style.css',
     }),
     new CopyPlugin({
       patterns: [{ from: '.', to: '../', context: 'public' }],
