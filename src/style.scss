@@ -1,79 +1,86 @@
-body {
+#short-cut-extension {
     margin: 0;
     padding: 0.5em;
     width: 380px;
     font-size: 12px;
-}
 
-section {
-    margin: 2px 0 2px 0;
-    padding: 2px 0;
-}
-
-button {
-    margin: 2px;
-}
-
-span.label-info {
-    margin-left: 4px;
-}
-
-h5 {
-    padding-left: 4px;
-    border-left: 6px solid #007bff;
-}
-
-.card {
-    margin: 4px 0;
-
-    h6 {
-        text-align: center;
+    section {
+        margin: 2px 0 2px 0;
         padding: 2px 0;
     }
 
-    &-header {
-        padding: 0;
+    button {
+        margin: 2px;
     }
 
-    &-body {
-        padding: 4px;
+    span.label-info {
+        margin-left: 4px;
     }
-}
 
-.btn-image {
-    background-color: #fff;
-    border: 0;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    margin: 0 auto;
-
-    img {
-        width: 24px;
-        height: 24px;
-        margin: 0 auto;
+    h5 {
+        padding-left: 4px;
+        border-left: 6px solid #007bff;
     }
-    img:hover {
+
+    .card {
+        margin: 4px 0;
+
+        h6 {
+            text-align: center;
+            padding: 2px 0;
+        }
+
+        &-header {
+            padding: 0;
+        }
+
+        &-body {
+            padding: 4px;
+        }
+    }
+
+    .btn-image {
+        background-color: #fff;
+        border: 0;
         width: 32px;
         height: 32px;
+        padding: 0;
+        margin: 0 auto;
+
+        img {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto;
+        }
+
+        img:hover {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    .btn-sm {
+        font-size: 1em;
+    }
+
+    .nav {
+        &-link {
+            padding: 0.2rem 0.5rem;
+            font-size: 11px;
+        }
+    }
+
+    textarea.form-control,
+    input[type="text"] {
+        font-size: 12px;
+    }
+
+    #text-area-hidden {
+        display: none;
     }
 }
 
-.btn-sm {
-    font-size: 1em;
-}
-
-.nav {
-    &-link {
-        padding: 0.25rem 0.5rem;
-    }
-}
-
-textarea.form-control,
-input[type="text"] {
-    font-size: 12px;
-}
-
-#text-area-hidden {
-    display: none;
+.shortcut-extension-highlight {
+    background-color: #ffff00;
+    font-weight: bold;
 }

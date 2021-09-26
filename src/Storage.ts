@@ -1,18 +1,18 @@
 export class Storage {
   public isOpenNewTab = false;
-  public hiddenShortcutMenu = false;
+  public highlightWords = '';
 
   readValues(callBack: () => void): void {
-    const values = ['isOpenNewTab', 'hiddenShortcutMenu'];
+    const values = ['isOpenNewTab', 'highlightWords'];
     chrome.storage.sync.get(values, (items) => {
       // LocalStorageから設定情報を取得
-      console.log(items);
+      console.debug(items);
 
       this.isOpenNewTab = items.isOpenNewTab;
-      this.hiddenShortcutMenu = items.hiddenShortcutMenu;
+      this.highlightWords = items.highlightWords;
 
-      console.log(`isOpenNewTab ${this.isOpenNewTab}`);
-      console.log(`hiddenShortcutMenu ${this.hiddenShortcutMenu}`);
+      console.debug(`isOpenNewTab ${this.isOpenNewTab}`);
+      console.debug(`highlightWords ${this.highlightWords}`)
 
       callBack();
     });
@@ -22,10 +22,10 @@ export class Storage {
    * ローカルストレージに設定内容を保存します
    */
   saveValues(): void {
-    console.log('saveValuesForLocalStorage -----');
+    console.debug('saveValuesForLocalStorage -----');
     chrome.storage.sync.set({
       isOpenNewTab: this.isOpenNewTab,
-      hiddenShortcutMenu: this.hiddenShortcutMenu,
+      highlightWords: this.highlightWords,
     });
   }
 }
