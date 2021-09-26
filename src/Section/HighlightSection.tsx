@@ -6,6 +6,7 @@ interface HighlightSectionProps {
 }
 export const HighlightSection = (props: HighlightSectionProps): JSX.Element => {
     const [storage] = useState(props.storage);
+    const [enableHighlight, setEnableHighlight] = useState<boolean>()
     const [highlightWords, setHighlightWords] = useState<string>()
 
     const saveHighlightWords = (): void => {
@@ -16,11 +17,18 @@ export const HighlightSection = (props: HighlightSectionProps): JSX.Element => {
     useEffect(() => {
         storage.readValues(() => {
             setHighlightWords(storage.highlightWords)
+            setEnableHighlight(storage.enableHighlight)
         })
     }, [])
 
     return (
         <div>
+            <label className={enableHighlight ? 'label label-enabled' : 'label'} onClick={() => {
+                const value = !enableHighlight;
+                setEnableHighlight(value)
+                storage.enableHighlight = value;
+                storage.saveValues()
+            }}>ハイライト有効</label>
             <textarea className='form-control' rows={8} onChange={(event) => setHighlightWords(event.target.value)} value={highlightWords} />
             <button className="btn btn-primary btn-sm w-100 mt-2" onClick={saveHighlightWords}>
                 保存する

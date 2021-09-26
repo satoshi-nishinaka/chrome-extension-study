@@ -4,7 +4,7 @@ import {unique} from "./Functions/Unique";
 
 const storage = new Storage();
 storage.readValues(() => {
-    if (!storage.highlightWords) {
+    if (storage.enableHighlight === false || !storage.highlightWords) {
         return
     }
     const highlightWords = unique(storage.highlightWords.trim().split('\n'));

@@ -78,6 +78,16 @@
     #text-area-hidden {
         display: none;
     }
+
+    .label {
+        border: 1px solid #000000;
+        padding: 2px 4px;
+        color: #000000;
+        &-enabled {
+            background-color: #222222;
+            color: #ffffff;
+        }
+    }
 }
 
 .shortcut-extension-highlight {
