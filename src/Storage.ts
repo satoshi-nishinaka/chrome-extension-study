@@ -14,8 +14,8 @@ export class Storage {
       this.enableHighlight = items.enableHighlight;
 
       console.debug(`isOpenNewTab ${this.isOpenNewTab}`);
-      console.debug(`highlightWords ${this.highlightWords}`)
-      console.debug(`enableHighlight ${this.enableHighlight}`)
+      console.debug(`highlightWords ${this.highlightWords}`);
+      console.debug(`enableHighlight ${this.enableHighlight}`);
 
       callBack();
     });
