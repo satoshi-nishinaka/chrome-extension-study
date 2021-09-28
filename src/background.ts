@@ -1,4 +1,4 @@
-function saveUrlAndTitle(): void {
+const saveUrlAndTitle = (): void => {
   chrome.tabs.getSelected(null, (tab) => {
     // 1. 任意のテキストを格納したテキストエリアを作成
     const textArea = document.createElement('textarea');
@@ -18,7 +18,7 @@ function saveUrlAndTitle(): void {
   });
 }
 
-function saveUrlAndTitleForMarkDown(): void {
+const saveUrlAndTitleForMarkDown = (): void => {
   chrome.tabs.getSelected(null, (tab) => {
     const textArea = document.createElement('textarea');
     textArea.value = `[${tab.title}](${tab.url})`;
