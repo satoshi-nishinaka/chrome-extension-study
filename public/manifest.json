@@ -11,12 +11,24 @@
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "background": {
     "scripts": [
       "js/background.js"
     ]
   },
+  "content_scripts": [
+    {
+      "matches": [ "http://*/*", "https://*/*" ],
+      "js": [
+        "js/vendor.js",
+        "js/content_script.js"
+      ],
+      "css": [
+        "css/style.css"
+      ]
+    }
+  ],
   "browser_action": {
     "default_title": "",
     "default_icon": "icons/128.png",

@@ -14,6 +14,7 @@ import { PageInformationSection } from '../Section/PageInformationSection';
 import { SettingSection } from '../Section/SettingSection';
 import { SNSLinksSection } from '../Section/ShortCutLinks/SNSLinksSection';
 import { ToolsSection } from '../Section/ToolsSection';
+import { HighlightSection } from '../Section/HighlightSection';
 
 export default function PopupContainer(): JSX.Element {
   const [storage] = useState(new Storage());
@@ -24,6 +25,7 @@ export default function PopupContainer(): JSX.Element {
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <TabEntry title="共通リンク" identify="home" active={true} />
           <TabEntry title="ツール" identify="tools" active={false} />
+          <TabEntry title="ハイライト" identify="highlight" active={false} />
           <TabEntry
             title="ページ情報"
             identify="page-information"
@@ -42,6 +44,9 @@ export default function PopupContainer(): JSX.Element {
           </TabContainer>
           <TabContainer active={false} identify="tools" title="Tools">
             <ToolsSection />
+          </TabContainer>
+          <TabContainer active={false} identify="highlight" title="ハイライト">
+            <HighlightSection storage={storage} />
           </TabContainer>
           <TabContainer
             active={false}
