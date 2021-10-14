@@ -3,14 +3,13 @@ import { Storage } from './Storage';
 import { unique } from './Functions/Unique';
 
 // そもそもチェックしなくて良いタグは最初から弾く
-const ignoreTags = ['head', 'script', 'meta', 'svg', 'img'];
+const ignoreTags = ['head', 'title', 'script', 'style', 'meta', 'svg', 'img'];
 
 const storage = new Storage();
 storage.readValues(() => {
   if (storage.enableHighlight === false || !storage.highlightWords) {
     return;
   }
-  console.debug('start replaceHighlightText ');
   const highlightWords = unique(storage.highlightWords.trim().split('\n'));
   const highlight = (highlightWords: string[]): void => {
     $('*').map((index, domElement) => {
@@ -44,5 +43,8 @@ storage.readValues(() => {
     });
     console.debug('replace finish');
   };
-  highlight(highlightWords);
+  window.onload = (event) => {
+    console.debug('start replaceHighlightText ');
+    highlight(highlightWords);
+  };
 });
