@@ -7,7 +7,7 @@ export const SNSLinksSection = (): JSX.Element => {
     <CardContainer title="☆SNS★">
       <ImageButton
         title="FaceBook"
-        image="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico?_nc_eui2=AeHkbnXHk8-uQM0bm9AaOT7WPOn1bULX7cv759IrZkPcIP6tSZ3bESNu27hkrF2Bo5Wu3mi91ph1nXTWKotHDb77lmXS1hY28HjCxNDFaIoBrA"
+        image="icons/facebook.ico"
         url="https://www.facebook.com/"
       />
       <ImageButton
