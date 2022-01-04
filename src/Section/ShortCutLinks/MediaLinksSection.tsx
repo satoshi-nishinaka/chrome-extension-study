@@ -20,6 +20,16 @@ export const MediaLinksSection = (): JSX.Element => {
         image="https://www.jsports.co.jp/favicon.ico"
         url="https://www.jsports.co.jp/"
       />
+      <ImageButton
+        title="Netflix"
+        url="https://www.netflix.com/"
+        image="https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.ico"
+      />
+      <ImageButton
+        title="njpwworld.com 新日本プロレスワールド"
+        url="http://njpwworld.com/"
+        image="http://njpwworld.com/favicon.ico"
+      />
     </CardContainer>
   );
 };
