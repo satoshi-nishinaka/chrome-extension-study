@@ -13,6 +13,7 @@ import { NewsLinksSection } from '../Section/ShortCutLinks/NewsLinksSection';
 import { PageInformationSection } from '../Section/PageInformationSection';
 import { SettingSection } from '../Section/SettingSection';
 import { SNSLinksSection } from '../Section/ShortCutLinks/SNSLinksSection';
+import { TechLinksSection } from '../Section/ShortCutLinks/TechLinksSection';
 import { ToolsSection } from '../Section/ToolsSection';
 import { HighlightSection } from '../Section/HighlightSection';
 
@@ -41,6 +42,7 @@ export default function PopupContainer(): JSX.Element {
             <NewsLinksSection />
             <GourmetLinksSection />
             <FinTechLinksSection />
+            <TechLinksSection />
           </TabContainer>
           <TabContainer active={false} identify="tools" title="Tools">
             <ToolsSection />
