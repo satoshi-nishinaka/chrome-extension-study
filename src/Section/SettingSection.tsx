@@ -10,11 +10,13 @@ interface SettingSectionProps {
 export const SettingSection = (props: SettingSectionProps): JSX.Element => {
   const [storage] = useState(props.storage);
   const [isOpenNewTab, setIsOpenNewTab] = useState(false);
+  const [enableConsoleLog, setEnableConsoleLog] = useState(false);
 
   useEffect(() => {
     // LocalStorageから設定情報を取得
     storage.readValues(() => {
       setIsOpenNewTab(storage.isOpenNewTab);
+      setEnableConsoleLog(storage.enableConsoleLog);
     });
   }, []);
 
@@ -25,6 +27,7 @@ export const SettingSection = (props: SettingSectionProps): JSX.Element => {
           <input
             name="isOpenNewTab"
             type="checkbox"
+            defaultChecked={false}
             checked={isOpenNewTab}
             onChange={(event) => {
               storage.isOpenNewTab = event.target.checked;
@@ -33,6 +36,22 @@ export const SettingSection = (props: SettingSectionProps): JSX.Element => {
             }}
           />
           <span className="label-info">新しいタブで開く</span>
+        </label>
+      </div>
+      <div className="form-row px-2">
+        <label>
+          <input
+            name="enableConsoleLog"
+            type="checkbox"
+            defaultChecked={false}
+            checked={enableConsoleLog}
+            onChange={(event) => {
+              storage.enableConsoleLog = event.target.checked;
+              setEnableConsoleLog(storage.enableConsoleLog);
+              storage.saveValues();
+            }}
+          />
+          <span className="label-info">ログをConsoleに流す</span>
         </label>
       </div>
     </CardContainer>
