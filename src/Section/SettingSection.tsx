@@ -6,17 +6,26 @@ import { CardContainer } from '../Container/CardContainer';
 interface SettingSectionProps {
   storage: Storage;
 }
+type State = {
+  isOpenNewTab: boolean;
+  enableConsoleLog: boolean;
+};
 
-export const SettingSection = (props: SettingSectionProps): JSX.Element => {
-  const [storage] = useState(props.storage);
-  const [isOpenNewTab, setIsOpenNewTab] = useState(false);
-  const [enableConsoleLog, setEnableConsoleLog] = useState(false);
+export const SettingSection = ({
+  storage,
+}: SettingSectionProps): JSX.Element => {
+  const [state, setState] = useState<State>({
+    enableConsoleLog: false,
+    isOpenNewTab: false,
+  });
 
   useEffect(() => {
     // LocalStorageから設定情報を取得
     storage.readValues(() => {
-      setIsOpenNewTab(storage.isOpenNewTab);
-      setEnableConsoleLog(storage.enableConsoleLog);
+      setState({
+        isOpenNewTab: storage.isOpenNewTab,
+        enableConsoleLog: storage.enableConsoleLog,
+      });
     });
   }, []);
 
@@ -28,10 +37,10 @@ export const SettingSection = (props: SettingSectionProps): JSX.Element => {
             name="isOpenNewTab"
             type="checkbox"
             defaultChecked={false}
-            checked={isOpenNewTab}
+            checked={state.isOpenNewTab}
             onChange={(event) => {
               storage.isOpenNewTab = event.target.checked;
-              setIsOpenNewTab(storage.isOpenNewTab);
+              setState({ ...state, isOpenNewTab: storage.isOpenNewTab });
               storage.saveValues();
             }}
           />
@@ -44,10 +53,13 @@ export const SettingSection = (props: SettingSectionProps): JSX.Element => {
             name="enableConsoleLog"
             type="checkbox"
             defaultChecked={false}
-            checked={enableConsoleLog}
+            checked={state.enableConsoleLog}
             onChange={(event) => {
               storage.enableConsoleLog = event.target.checked;
-              setEnableConsoleLog(storage.enableConsoleLog);
+              setState({
+                ...state,
+                enableConsoleLog: storage.enableConsoleLog,
+              });
               storage.saveValues();
             }}
           />
