@@ -41,10 +41,17 @@ storage.readValues(() => {
 
       domElement.innerHTML = html;
     });
-    console.debug('replace finish');
+    if (storage.enableConsoleLog) {
+      console.debug('replace finish');
+    }
+    if (storage.showSucceedMessage) {
+      $('body').append(
+        '<span class="shortcut-extension-succeed-message">Highlight text</span>'
+      );
+    }
   };
-  window.onload = (event) => {
+  if (storage.enableConsoleLog) {
     console.debug('start replaceHighlightText ');
-    highlight(highlightWords);
-  };
+  }
+  highlight(highlightWords);
 });

@@ -90,7 +90,26 @@
     }
 }
 
-.shortcut-extension-highlight {
-    background-color: #ffff00;
-    font-weight: bold;
+.shortcut-extension {
+    &-highlight {
+        border: 1px #ffff00 solid;
+        border-radius: 5px;
+        background-color: #ffff00;
+        font-weight: bold;
+    }
+    &-succeed-message {
+        z-index: 1000;
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+        opacity: 0.6;
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        padding: 4px 8px;
+        &:hover {
+            opacity: 1.0;
+        }
+    }
 }
+
