@@ -48,6 +48,9 @@ storage.readValues(() => {
       $('body').append(
         '<span class="shortcut-extension-succeed-message">Highlight text</span>'
       );
+      $('.shortcut-extension-succeed-message').on('click', () => {
+        $('.shortcut-extension-succeed-message').css('display', 'none');
+      });
     }
   };
   if (storage.enableConsoleLog) {
