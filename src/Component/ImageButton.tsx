@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Storage } from '../Storage';
 import { transitionToNextPage } from '../Functions/Transition';
 
-interface ImageButtonProps {
+type ImageButtonProps = {
   title: string;
   image: string;
   url: string;
-}
+};
 
 export const ImageButton = (props: ImageButtonProps): JSX.Element => {
   const { title, image, url } = props;

@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { Storage } from '../Storage';
 import { CardContainer } from '../Container/CardContainer';
 
-interface SettingSectionProps {
+type SettingSectionProps = {
   storage: Storage;
-}
+};
+
 type State = {
   isOpenNewTab: boolean;
   enableConsoleLog: boolean;

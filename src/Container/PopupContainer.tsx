@@ -17,7 +17,7 @@ import { TechLinksSection } from '../Section/ShortCutLinks/TechLinksSection';
 import { ToolsSection } from '../Section/ToolsSection';
 import { HighlightSection } from '../Section/HighlightSection';
 
-export default function PopupContainer(): JSX.Element {
+const PopupContainer = (): JSX.Element => {
   const [storage] = useState(new Storage());
 
   return (
@@ -45,7 +45,7 @@ export default function PopupContainer(): JSX.Element {
             <TechLinksSection />
           </TabContainer>
           <TabContainer active={false} identify="tools" title="Tools">
-            <ToolsSection />
+            <ToolsSection storage={storage} />
           </TabContainer>
           <TabContainer active={false} identify="highlight" title="ハイライト">
             <HighlightSection storage={storage} />
@@ -72,7 +72,7 @@ export default function PopupContainer(): JSX.Element {
       </section>
     </div>
   );
-}
+};
 
 const root = document.getElementById('root');
 if (root) {

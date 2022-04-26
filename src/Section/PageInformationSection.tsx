@@ -11,14 +11,15 @@ export const PageInformationSection = (): JSX.Element => {
   });
 
   useEffect(() => {
-    chrome.tabs.getSelected(null, (tab) => {
+    chrome.tabs.query({ active: true }, (tabs) => {
+      const activeTab = tabs[0];
       const pageSummary =
-        `${tab.title}\n${tab.url}` +
-        (tab.favIconUrl ? `\n${tab.favIconUrl}` : '');
+        `${activeTab.title}\n${activeTab.url}` +
+        (activeTab.favIconUrl ? `\n${activeTab.favIconUrl}` : '');
       setState({
-        title: tab.title ?? '',
-        url: tab.url ?? '',
-        favicon: tab.favIconUrl ?? '',
+        title: activeTab.title ?? '',
+        url: activeTab.url ?? '',
+        favicon: activeTab.favIconUrl ?? '',
         meta: pageSummary ?? '',
       });
     });

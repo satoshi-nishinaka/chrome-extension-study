@@ -1,4 +1,4 @@
-function saveUrlAndTitle(): void {
+export const saveUrlAndTitle = (): void => {
   chrome.tabs.query({ active: true }, (tabs) => {
     const activeTab = tabs[0];
     // 1. 任意のテキストを格納したテキストエリアを作成
@@ -17,9 +17,9 @@ function saveUrlAndTitle(): void {
       '現在開いているページのタイトルとURLをクリップボードにコピーしました'
     );
   });
-}
+};
 
-function saveUrlAndTitleForMarkDown(): void {
+export const saveUrlAndTitleForMarkDown = (): void => {
   chrome.tabs.query({ active: true }, (tabs) => {
     const activeTab = tabs[0];
     const textArea = document.createElement('textarea');
@@ -34,7 +34,7 @@ function saveUrlAndTitleForMarkDown(): void {
       '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
     );
   });
-}
+};
 
 /**
 Amazonでのイチオシ裏コマンドはマーケットプレイス出品を非表示にする「&emi=AN1VRQENFRJN5」。Amazonからの公式出品のみの表示となり、偽物・送料サギがまずなくなるでしょう。

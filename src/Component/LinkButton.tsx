@@ -2,10 +2,10 @@ import * as React from 'react';
 import { transitionToNextPage } from '../Functions/Transition';
 import { Storage } from '../Storage';
 
-interface LinkButtonProps {
+type LinkButtonProps = {
   text: string;
   url: string;
-}
+};
 
 export const LinkButton = (props: LinkButtonProps): JSX.Element => {
   const { text, url } = props;

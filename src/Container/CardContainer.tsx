@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface CardContainerProps {
+type CardContainerProps = {
   title?: string;
   cardClassName?: string;
   cardBodyClassName?: string;
-}
+};
 
 export const CardContainer: React.FC<CardContainerProps> = ({
   title,
