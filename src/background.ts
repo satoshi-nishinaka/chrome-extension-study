@@ -1,8 +1,9 @@
 function saveUrlAndTitle(): void {
-  chrome.tabs.getSelected(null, (tab) => {
+  chrome.tabs.query({ active: true }, (tabs) => {
+    const activeTab = tabs[0];
     // 1. 任意のテキストを格納したテキストエリアを作成
     const textArea = document.createElement('textarea');
-    textArea.value = `${tab.title}\n${tab.url}`;
+    textArea.value = `${activeTab.title}\n${activeTab.url}`;
     document.body.appendChild(textArea);
 
     // 2. 作成したテキストエリアを選択し、クリップボードに保存
@@ -19,9 +20,10 @@ function saveUrlAndTitle(): void {
 }
 
 function saveUrlAndTitleForMarkDown(): void {
-  chrome.tabs.getSelected(null, (tab) => {
+  chrome.tabs.query({ active: true }, (tabs) => {
+    const activeTab = tabs[0];
     const textArea = document.createElement('textarea');
-    textArea.value = `[${tab.title}](${tab.url})`;
+    textArea.value = `[${activeTab.title}](${activeTab.url})`;
     document.body.appendChild(textArea);
 
     textArea.select();
