@@ -36,7 +36,6 @@ export const SettingSection = ({
           <input
             name="isOpenNewTab"
             type="checkbox"
-            defaultChecked={false}
             checked={state.isOpenNewTab}
             onChange={(event) => {
               storage.isOpenNewTab = event.target.checked;
@@ -52,7 +51,6 @@ export const SettingSection = ({
           <input
             name="enableConsoleLog"
             type="checkbox"
-            defaultChecked={false}
             checked={state.enableConsoleLog}
             onChange={(event) => {
               storage.enableConsoleLog = event.target.checked;

@@ -52,7 +52,6 @@ export const HighlightSection = ({
         className="form-control"
         rows={8}
         disabled={!state.enableHighlight}
-        defaultChecked={false}
         onChange={(event) =>
           setState({ ...state, highlightWords: event.target.value })
         }
@@ -63,9 +62,8 @@ export const HighlightSection = ({
           <input
             type="checkbox"
             className="mx-2"
-            defaultChecked={false}
             checked={state.showSucceedMessage}
-            onClick={() =>
+            onChange={() =>
               setState({
                 ...state,
                 showSucceedMessage: !state.showSucceedMessage,
