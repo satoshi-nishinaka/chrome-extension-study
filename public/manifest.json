@@ -46,12 +46,6 @@
         "default": "Alt+Shift+C"
       },
       "description": "Save Title and URL for Markdown"
-    },
-    "save_url_and_title_and_favicon": {
-      "suggested_key": {
-        "default": "Alt+Shift+X"
-      },
-      "description": "Save Title and URL and favicon"
     }
   }
 }
