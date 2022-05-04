@@ -1,9 +1,11 @@
 import React = require('react');
 import { Storage } from '../Storage';
 import { useEffect, useState } from 'react';
-interface HighlightSectionProps {
+
+type HighlightSectionProps = {
   storage: Storage;
-}
+};
+
 type State = {
   enableHighlight: boolean;
   highlightWords: string;
