@@ -11,7 +11,7 @@ export const LinkButton = (props: LinkButtonProps): JSX.Element => {
   const { text, url } = props;
   const transitionTo = (): void => {
     const storage = new Storage();
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       transitionToNextPage(url, storage.isOpenNewTab);
     });
   };

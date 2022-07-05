@@ -28,7 +28,7 @@ export const HighlightSection = ({
   };
 
   useEffect(() => {
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       setState({
         highlightWords: storage.highlightWords,
         enableHighlight: storage.enableHighlight,
