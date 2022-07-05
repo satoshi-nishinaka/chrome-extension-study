@@ -11,7 +11,7 @@ export const PageInformationSection = (): JSX.Element => {
   });
 
   useEffect(() => {
-    chrome.tabs.query({ active: true }, (tabs) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const activeTab = tabs[0];
       const pageSummary =
         `${activeTab.title}\n${activeTab.url}` +

@@ -22,7 +22,7 @@ export const SettingSection = ({
 
   useEffect(() => {
     // LocalStorageから設定情報を取得
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       setState({
         isOpenNewTab: storage.isOpenNewTab,
         enableConsoleLog: storage.enableConsoleLog,

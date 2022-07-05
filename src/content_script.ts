@@ -6,7 +6,7 @@ import { unique } from './Functions/Unique';
 const ignoreTags = ['head', 'title', 'script', 'style', 'meta', 'svg', 'img'];
 
 const storage = new Storage();
-storage.readValues(() => {
+storage.readValues().then(() => {
   if (storage.enableHighlight === false || !storage.highlightWords) {
     return;
   }

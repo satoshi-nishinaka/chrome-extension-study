@@ -13,7 +13,7 @@ export const ImageButton = (props: ImageButtonProps): JSX.Element => {
 
   const transitionTo = (): void => {
     const storage = new Storage();
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       transitionToNextPage(url, storage.isOpenNewTab);
       window.close();
     });

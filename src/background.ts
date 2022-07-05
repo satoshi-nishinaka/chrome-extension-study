@@ -1,5 +1,5 @@
 export const saveUrlAndTitle = (): void => {
-  chrome.tabs.query({ active: true }, (tabs) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const activeTab = tabs[0];
     // 1. 任意のテキストを格納したテキストエリアを作成
     const textArea = document.createElement('textarea');
@@ -20,7 +20,7 @@ export const saveUrlAndTitle = (): void => {
 };
 
 export const saveUrlAndTitleForMarkDown = (): void => {
-  chrome.tabs.query({ active: true }, (tabs) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const activeTab = tabs[0];
     const textArea = document.createElement('textarea');
     textArea.value = `[${activeTab.title}](${activeTab.url})`;
