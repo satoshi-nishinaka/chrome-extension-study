@@ -1,13 +1,16 @@
 /**
  * 指定したURLを開きます。
  * @param url
- * @param newTab 新しいタブで開くか？
+ * @param isOpenNewTab 新しいタブで開くか？
  */
-export const transitionToNextPage = (url: string, newTab: boolean): void => {
+export const transitionToNextPage = (
+  url: string,
+  isOpenNewTab: boolean
+): void => {
   if (url === undefined) {
     return;
   }
-  if (newTab) {
+  if (isOpenNewTab) {
     chrome.tabs.create({ url: url });
     return;
   }
