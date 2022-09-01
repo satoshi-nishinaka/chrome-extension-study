@@ -5,6 +5,7 @@ const config: Config = {
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },
+  transformIgnorePatterns: [],
 };
 
 export default config;
