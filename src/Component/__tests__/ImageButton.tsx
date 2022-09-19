@@ -9,7 +9,7 @@ import { ImageButton } from '../ImageButton';
 
 describe('render', () => {
   test('should render component', async () => {
-    render(
+    const { getByRole } = render(
       <ImageButton
         title={'hoge'}
         image={'https://example.com/foo.png'}
@@ -17,7 +17,7 @@ describe('render', () => {
       />
     );
 
-    expect(screen.getByRole('button')).toBeInTheDocument();
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(getByRole('button')).toBeInTheDocument();
+    expect(getByRole('img')).toBeInTheDocument();
   });
 });

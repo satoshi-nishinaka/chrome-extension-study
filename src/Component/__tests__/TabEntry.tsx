@@ -5,12 +5,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { LinkButton } from '../LinkButton';
+import TabEntry from '../TabEntry';
 
-test('renders a button', () => {
+test('renders a tab', () => {
   const { getByText, getByRole } = render(
-    <LinkButton text={'hoge'} url={'https://example.com'} />
+    <TabEntry title={'hoge'} active={true} identify={'title'} />
   );
   expect(getByText('hoge')).toBeInTheDocument();
-  expect(getByRole('button')).toBeInTheDocument();
+  expect(getByRole('tab')).toBeInTheDocument();
 });
