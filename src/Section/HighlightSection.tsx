@@ -1,9 +1,9 @@
 import React = require('react');
-import { Storage } from '../Storage';
+import { IStorage } from '../Storage';
 import { useEffect, useState } from 'react';
 
 type HighlightSectionProps = {
-  storage: Storage;
+  storage: IStorage;
 };
 
 type State = {

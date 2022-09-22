@@ -13,4 +13,8 @@ describe('render', () => {
 
     expect(getByRole('article')).toBeInTheDocument();
   });
+  test('set title', () => {
+    const { getByText } = render(<CardContainer title={'hoge'} />);
+    expect(getByText('hoge')).toBeInTheDocument();
+  });
 });

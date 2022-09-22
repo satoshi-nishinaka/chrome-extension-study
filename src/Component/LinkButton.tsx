@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { transitionToNextPage } from '../Functions/Transition';
-import { Storage } from '../Storage';
+import { IStorage } from '../Storage';
 
 type LinkButtonProps = {
   text: string;
   url: string;
+  storage: IStorage;
 };
 
 export const LinkButton = (props: LinkButtonProps): JSX.Element => {
-  const { text, url } = props;
+  const { text, url, storage } = props;
   const transitionTo = (): void => {
-    const storage = new Storage();
-    storage.readValues().then(() => {
-      transitionToNextPage(url, storage.isOpenNewTab);
-    });
+    transitionToNextPage(url, storage.isOpenNewTab);
   };
 
   return (

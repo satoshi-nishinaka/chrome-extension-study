@@ -21,5 +21,4 @@ export const transitionToNextPage = (
     // Set the URL to the Local-NTP (New Tab Page)
     chrome.tabs.update(active, { url: url });
   });
-  window.close();
 };
