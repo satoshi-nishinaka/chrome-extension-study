@@ -1,4 +1,31 @@
-export class Storage {
+export interface IStorage {
+  isOpenNewTab: boolean;
+  highlightWords: string;
+  enableHighlight: boolean;
+  enableConsoleLog: boolean;
+  showSucceedMessage: boolean;
+  readValues(): Promise<void>;
+  saveValues(): void;
+}
+
+export class DummyStorage implements IStorage {
+  enableConsoleLog = false;
+  highlightWords = '';
+  showSucceedMessage = false;
+  isOpenNewTab = false;
+  enableHighlight = false;
+  readValues(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      resolve();
+    });
+  }
+
+  saveValues(): void {
+    console.debug('saveValues');
+  }
+}
+
+export class Storage implements IStorage {
   public isOpenNewTab = false;
   public highlightWords = '';
   public enableHighlight = false;

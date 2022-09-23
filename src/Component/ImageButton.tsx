@@ -1,22 +1,20 @@
 import * as React from 'react';
-import { Storage } from '../Storage';
+import { IStorage } from '../Storage';
 import { transitionToNextPage } from '../Functions/Transition';
 
 type ImageButtonProps = {
   title: string;
   image: string;
   url: string;
+  storage: IStorage;
 };
 
 export const ImageButton = (props: ImageButtonProps): JSX.Element => {
-  const { title, image, url } = props;
+  const { title, image, url, storage } = props;
 
   const transitionTo = (): void => {
-    const storage = new Storage();
-    storage.readValues().then(() => {
-      transitionToNextPage(url, storage.isOpenNewTab);
-      window.close();
-    });
+    transitionToNextPage(url, storage.isOpenNewTab);
+    window.close();
   };
 
   return (

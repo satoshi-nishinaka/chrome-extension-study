@@ -37,12 +37,12 @@ const PopupContainer = (): JSX.Element => {
         </ul>
         <div className="tab-content" id="myTabContent">
           <TabContainer active={true} identify="home" title={null}>
-            <SNSLinksSection />
-            <MediaLinksSection />
-            <NewsLinksSection />
-            <GourmetLinksSection />
-            <FinTechLinksSection />
-            <TechLinksSection />
+            <SNSLinksSection storage={storage} />
+            <MediaLinksSection storage={storage} />
+            <NewsLinksSection storage={storage} />
+            <GourmetLinksSection storage={storage} />
+            <FinTechLinksSection storage={storage} />
+            <TechLinksSection storage={storage} />
           </TabContainer>
           <TabContainer active={false} identify="tools" title="Tools">
             <ToolsSection storage={storage} />
@@ -63,6 +63,7 @@ const PopupContainer = (): JSX.Element => {
           <TabContainer active={false} identify="about" title="About">
             <CardContainer title={null} cardClassName="text-center">
               <LinkButton
+                storage={storage}
                 text="GitHub"
                 url="https://github.com/satoshi-nishinaka/chrome-extension-study"
               />
