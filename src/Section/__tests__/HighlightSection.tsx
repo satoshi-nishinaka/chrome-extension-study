@@ -29,5 +29,5 @@ test('change value after click', async () => {
   expect(await screen.findByDisplayValue('hoge')).toBeInTheDocument();
 
   fireEvent.click(screen.getByText('ハイライト有効'));
-  expect(storage.enableHighlight).toEqual(false);
+  expect(storage.enableHighlight).toEqual(true);
 });
