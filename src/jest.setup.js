@@ -1,3 +1,3 @@
 // jest.setup.js
 
-Object.assign(global, require('jest-chrome'))
+Object.assign(global, require('jest-chrome'));
