@@ -1,6 +1,10 @@
 {
-  "manifest_version": 3,
   "name": "ShortCut Extension",
+  "version": "2.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "js/background.js"
+  },
   "permissions": [
     "activeTab",
     "clipboardWrite",
@@ -9,31 +13,27 @@
     "tabs",
     "webRequest"
   ],
-  "icons": {
-    "16": "icons/16.png",
-    "48": "icons/48.png",
-    "128": "icons/128.png"
-  },
-  "version": "2.0.0",
-  "background": {
-    "service_worker": "js/background.js"
+  "action": {
+    "default_title": "",
+    "default_icon": "icons/128.png",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "matches": [ "http://*/*", "https://*/*" ],
       "js": [
-        "js/vendor.js",
         "js/content_script.js"
       ],
+      "run_at":"document_start",
       "css": [
         "css/style.css"
       ]
     }
   ],
-  "action": {
-    "default_title": "",
-    "default_icon": "icons/128.png",
-    "default_popup": "popup.html"
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
   },
   "commands": {
     "save_url_and_title": {
