@@ -1,38 +1,35 @@
-export const saveUrlAndTitle = (): void => {
+const copy = (tabId: number, text: string) => {
+  console.info(text);
+  chrome.tabs.sendMessage(tabId, text).catch((reason) => {
+    console.error('Error occurred.', reason);
+  });
+};
+
+export const saveUrlAndTitle = () => {
+  console.log('called saveUrlAndTitle.');
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
     const activeTab = tabs[0];
-    // 1. 任意のテキストを格納したテキストエリアを作成
-    const textArea = document.createElement('textarea');
-    textArea.value = `${activeTab.title}\n${activeTab.url}`;
-    document.body.appendChild(textArea);
-
-    // 2. 作成したテキストエリアを選択し、クリップボードに保存
-    textArea.select();
-    document.execCommand('copy');
-
-    // 3. テキストエリアを削除
-    document.body.removeChild(textArea);
-
-    alert(
-      '現在開いているページのタイトルとURLをクリップボードにコピーしました'
-    );
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `${activeTab.title}\n${activeTab.url}`);
   });
 };
 
 export const saveUrlAndTitleForMarkDown = (): void => {
+  console.log('called saveUrlAndTitleForMarkDown.');
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
     const activeTab = tabs[0];
-    const textArea = document.createElement('textarea');
-    textArea.value = `[${activeTab.title}](${activeTab.url})`;
-    document.body.appendChild(textArea);
-
-    textArea.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(textArea);
-    alert(
-      '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
-    );
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `[${activeTab.title}](${activeTab.url})`);
   });
 };
 
@@ -46,15 +43,34 @@ Amazonでのイチオシ裏コマンドはマーケットプレイス出品を�
 このほかの裏コマンドには「&low-price=100 &high-price=2000」なら100円から2,000円の商品のみを表示、「&sort=-price」が価格の高い順に並び替え、「&sort=price」が価格の安い順に並び替え、「&sort=releasedate」が発売日の新しい順に並べ替えです。
  */
 
-chrome.commands.onCommand.addListener((command) => {
-  switch (command) {
-    case 'save_url_and_title':
-      saveUrlAndTitle();
-      break;
-    case 'save_url_and_title_for_markdown':
-      saveUrlAndTitleForMarkDown();
-      break;
-    default:
-      break;
-  }
+// インストール時にstorageを初期値で初期化します。
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('on installed');
+  chrome.storage.sync.set({ ['__sample_color']: '#ffff00' }).then(() => {
+    console.info('storage update');
+  });
 });
+
+// タブの内容が更新された際に、content scriptsに `SET_BG`メッセージを送信します。
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  console.log('tabs.on updated');
+  // chrome.tabs.sendMessage(tabId, 'SET_BG').catch((error) => {
+  //   console.error(error);
+  // });
+  chrome.runtime.sendMessage('test', (response) => {
+    console.log('chrome.runtime.sendMessage', response);
+  });
+});
+//
+// chrome.commands.onCommand.addListener((command) => {
+//   switch (command) {
+//     case 'save_url_and_title':
+//       saveUrlAndTitle();
+//       break;
+//     case 'save_url_and_title_for_markdown':
+//       saveUrlAndTitleForMarkDown();
+//       break;
+//     default:
+//       break;
+//   }
+// });
