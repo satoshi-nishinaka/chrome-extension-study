@@ -1,38 +1,35 @@
-export const saveUrlAndTitle = (): void => {
+const copy = (tabId: number, text: string) => {
+  console.info(text);
+  chrome.tabs.sendMessage(tabId, text).catch((reason) => {
+    console.error('Error occurred.', reason);
+  });
+};
+
+export const saveUrlAndTitle = () => {
+  console.log('called saveUrlAndTitle.');
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
     const activeTab = tabs[0];
-    // 1. 任意のテキストを格納したテキストエリアを作成
-    const textArea = document.createElement('textarea');
-    textArea.value = `${activeTab.title}\n${activeTab.url}`;
-    document.body.appendChild(textArea);
-
-    // 2. 作成したテキストエリアを選択し、クリップボードに保存
-    textArea.select();
-    document.execCommand('copy');
-
-    // 3. テキストエリアを削除
-    document.body.removeChild(textArea);
-
-    alert(
-      '現在開いているページのタイトルとURLをクリップボードにコピーしました'
-    );
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `${activeTab.title}\n${activeTab.url}`);
   });
 };
 
 export const saveUrlAndTitleForMarkDown = (): void => {
+  console.log('called saveUrlAndTitleForMarkDown.');
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
     const activeTab = tabs[0];
-    const textArea = document.createElement('textarea');
-    textArea.value = `[${activeTab.title}](${activeTab.url})`;
-    document.body.appendChild(textArea);
-
-    textArea.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(textArea);
-    alert(
-      '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
-    );
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `[${activeTab.title}](${activeTab.url})`);
   });
 };
 
