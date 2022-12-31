@@ -1,5 +1,6 @@
 import { Storage } from './Storage';
 import { unique } from './Functions/Unique';
+import {stringify} from "ts-jest";
 
 // そもそもチェックしなくて良いタグは最初から弾く
 const ignoreTags = [
@@ -15,6 +16,26 @@ const ignoreTags = [
 
 console.info('short-cut-extension start');
 
+/**
+ * BackgroundScriptからメッセージを受け取る
+ * ※順番が後ろの場合はメッセージを受け取れない
+ */
+chrome.runtime.onMessage.addListener((request) => {
+  // 1. 任意のテキストを格納したテキストエリアを作成
+  const textArea = document.createElement('textarea');
+  textArea.value = `${request}`;
+  document.body.appendChild(textArea);
+
+  // 2. 作成したテキストエリアを選択し、クリップボードに保存
+  textArea.select();
+  document.execCommand('copy');
+
+  // 3. テキストエリアを削除
+  document.body.removeChild(textArea);
+
+  alert('現在開いているページのタイトルとURLをクリップボードにコピーしました');
+});
+
 const storage = new Storage();
 storage.readValues().then(() => {
   if (storage.enableHighlight === false || !storage.highlightWords) {
@@ -23,12 +44,10 @@ storage.readValues().then(() => {
   const highlightWords = unique(storage.highlightWords.trim().split('\n'));
   const highlight = (highlightWords: string[]): void => {
     const elements = document.querySelectorAll('*');
-    console.info(elements.length);
     elements.forEach((element) => {
       if (ignoreTags.includes(element.tagName.toLowerCase())) {
         return;
       }
-      console.info(element.tagName);
       if (
         element.hasChildNodes() &&
         (element.childNodes.length !== 1 ||
@@ -68,16 +87,11 @@ storage.readValues().then(() => {
         )[0] as HTMLElement;
         label.style.display = 'none';
       });
-      document.appendChild(label);
+      // document.appendChild(label);
     }
   };
   if (storage.enableConsoleLog) {
     console.debug('start replaceHighlightText ');
   }
   highlight(highlightWords);
-});
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.info(request, sender, sendResponse);
-  return true;
 });

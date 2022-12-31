@@ -43,34 +43,15 @@ Amazonでのイチオシ裏コマンドはマーケットプレイス出品を�
 このほかの裏コマンドには「&low-price=100 &high-price=2000」なら100円から2,000円の商品のみを表示、「&sort=-price」が価格の高い順に並び替え、「&sort=price」が価格の安い順に並び替え、「&sort=releasedate」が発売日の新しい順に並べ替えです。
  */
 
-// インストール時にstorageを初期値で初期化します。
-chrome.runtime.onInstalled.addListener(() => {
-  console.log('on installed');
-  chrome.storage.sync.set({ ['__sample_color']: '#ffff00' }).then(() => {
-    console.info('storage update');
-  });
+chrome.commands.onCommand.addListener((command) => {
+  switch (command) {
+    case 'save_url_and_title':
+      saveUrlAndTitle();
+      break;
+    case 'save_url_and_title_for_markdown':
+      saveUrlAndTitleForMarkDown();
+      break;
+    default:
+      break;
+  }
 });
-
-// タブの内容が更新された際に、content scriptsに `SET_BG`メッセージを送信します。
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  console.log('tabs.on updated');
-  // chrome.tabs.sendMessage(tabId, 'SET_BG').catch((error) => {
-  //   console.error(error);
-  // });
-  chrome.runtime.sendMessage('test', (response) => {
-    console.log('chrome.runtime.sendMessage', response);
-  });
-});
-//
-// chrome.commands.onCommand.addListener((command) => {
-//   switch (command) {
-//     case 'save_url_and_title':
-//       saveUrlAndTitle();
-//       break;
-//     case 'save_url_and_title_for_markdown':
-//       saveUrlAndTitleForMarkDown();
-//       break;
-//     default:
-//       break;
-//   }
-// });
