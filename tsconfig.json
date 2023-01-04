@@ -11,5 +11,11 @@
             "node_modules/@types"
         ],
         "jsx": "react",
-    }
+        "lib": ["DOM"],
+        "esModuleInterop": true
+    },
+    "types": ["node", "jest", "puppeteer"],
+    "include": [
+        "node_modules/@types/puppeteer/index.d.ts",
+    ]
 }
