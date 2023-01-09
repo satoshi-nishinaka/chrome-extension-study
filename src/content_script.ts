@@ -1,6 +1,5 @@
 import { Storage } from './Storage';
 import { unique } from './Functions/Unique';
-import {stringify} from "ts-jest";
 
 // そもそもチェックしなくて良いタグは最初から弾く
 const ignoreTags = [
