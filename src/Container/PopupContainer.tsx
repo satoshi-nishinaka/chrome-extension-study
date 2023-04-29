@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useState } from 'react';
@@ -17,7 +19,7 @@ import { TechLinksSection } from '../Section/ShortCutLinks/TechLinksSection';
 import { ToolsSection } from '../Section/ToolsSection';
 import { HighlightSection } from '../Section/HighlightSection';
 
-export default function PopupContainer(): JSX.Element {
+const PopupContainer = (): JSX.Element => {
   const [storage] = useState(new Storage());
 
   return (
@@ -37,15 +39,15 @@ export default function PopupContainer(): JSX.Element {
         </ul>
         <div className="tab-content" id="myTabContent">
           <TabContainer active={true} identify="home" title={null}>
-            <SNSLinksSection />
-            <MediaLinksSection />
-            <NewsLinksSection />
-            <GourmetLinksSection />
-            <FinTechLinksSection />
-            <TechLinksSection />
+            <SNSLinksSection storage={storage} />
+            <MediaLinksSection storage={storage} />
+            <NewsLinksSection storage={storage} />
+            <GourmetLinksSection storage={storage} />
+            <FinTechLinksSection storage={storage} />
+            <TechLinksSection storage={storage} />
           </TabContainer>
           <TabContainer active={false} identify="tools" title="Tools">
-            <ToolsSection />
+            <ToolsSection storage={storage} />
           </TabContainer>
           <TabContainer active={false} identify="highlight" title="ハイライト">
             <HighlightSection storage={storage} />
@@ -63,6 +65,7 @@ export default function PopupContainer(): JSX.Element {
           <TabContainer active={false} identify="about" title="About">
             <CardContainer title={null} cardClassName="text-center">
               <LinkButton
+                storage={storage}
                 text="GitHub"
                 url="https://github.com/satoshi-nishinaka/chrome-extension-study"
               />
@@ -72,7 +75,7 @@ export default function PopupContainer(): JSX.Element {
       </section>
     </div>
   );
-}
+};
 
 const root = document.getElementById('root');
 if (root) {

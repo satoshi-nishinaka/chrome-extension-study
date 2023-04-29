@@ -12,6 +12,7 @@ export const CopyToClipBoardAllTabUrlButton = (): JSX.Element => {
       textArea.select();
       document.execCommand('copy');
       document.body.removeChild(textArea);
+      alert('すべてのタブのURLをクリップボードにコピーしました');
     });
   };
   return (

@@ -1,38 +1,37 @@
-function saveUrlAndTitle(): void {
-  chrome.tabs.getSelected(null, (tab) => {
-    // 1. 任意のテキストを格納したテキストエリアを作成
-    const textArea = document.createElement('textarea');
-    textArea.value = `${tab.title}\n${tab.url}`;
-    document.body.appendChild(textArea);
-
-    // 2. 作成したテキストエリアを選択し、クリップボードに保存
-    textArea.select();
-    document.execCommand('copy');
-
-    // 3. テキストエリアを削除
-    document.body.removeChild(textArea);
-
-    alert(
-      '現在開いているページのタイトルとURLをクリップボードにコピーしました'
-    );
+const copy = (tabId: number, text: string) => {
+  console.info(text);
+  chrome.tabs.sendMessage(tabId, text).catch((reason) => {
+    console.error('Error occurred.', reason);
   });
-}
+};
 
-function saveUrlAndTitleForMarkDown(): void {
-  chrome.tabs.getSelected(null, (tab) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = `[${tab.title}](${tab.url})`;
-    document.body.appendChild(textArea);
-
-    textArea.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(textArea);
-    alert(
-      '現在開いているページのタイトルとURLをmarkdown形式でクリップボードにコピーしました'
-    );
+export const saveUrlAndTitle = () => {
+  console.log('called saveUrlAndTitle.');
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
+    const activeTab = tabs[0];
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `${activeTab.title}\n${activeTab.url}`);
   });
-}
+};
+
+export const saveUrlAndTitleForMarkDown = (): void => {
+  console.log('called saveUrlAndTitleForMarkDown.');
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    console.info(self, self.navigator, navigator);
+    const activeTab = tabs[0];
+    if (!activeTab) {
+      console.error('active tab が取得できていない');
+      return;
+    }
+    console.info(activeTab);
+    copy(activeTab.id, `[${activeTab.title}](${activeTab.url})`);
+  });
+};
 
 /**
 Amazonでのイチオシ裏コマンドはマーケットプレイス出品を非表示にする「&emi=AN1VRQENFRJN5」。Amazonからの公式出品のみの表示となり、偽物・送料サギがまずなくなるでしょう。

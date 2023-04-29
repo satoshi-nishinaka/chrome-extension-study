@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { Storage } from '../Storage';
 import { CardContainer } from '../Container/CardContainer';
 
-interface SettingSectionProps {
+type SettingSectionProps = {
   storage: Storage;
-}
+};
+
 type State = {
   isOpenNewTab: boolean;
   enableConsoleLog: boolean;
@@ -21,7 +22,7 @@ export const SettingSection = ({
 
   useEffect(() => {
     // LocalStorageから設定情報を取得
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       setState({
         isOpenNewTab: storage.isOpenNewTab,
         enableConsoleLog: storage.enableConsoleLog,
@@ -36,7 +37,6 @@ export const SettingSection = ({
           <input
             name="isOpenNewTab"
             type="checkbox"
-            defaultChecked={false}
             checked={state.isOpenNewTab}
             onChange={(event) => {
               storage.isOpenNewTab = event.target.checked;
@@ -52,7 +52,6 @@ export const SettingSection = ({
           <input
             name="enableConsoleLog"
             type="checkbox"
-            defaultChecked={false}
             checked={state.enableConsoleLog}
             onChange={(event) => {
               storage.enableConsoleLog = event.target.checked;

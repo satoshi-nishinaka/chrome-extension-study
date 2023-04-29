@@ -1,8 +1,13 @@
 import * as React from 'react';
-export const CloseDuplicateTabButton = (): JSX.Element => {
+import { Storage } from '../Storage';
+type Props = {
+  storage: Storage;
+};
+
+export const CloseDuplicateTabButton = (props: Props): JSX.Element => {
   const execute = (): void => {
     if (confirm('重複するタブを閉じます\nよろしいですか？？')) {
-      if (closeDuplicateTabs()) {
+      if (closeDuplicateTabs(props.storage.enableConsoleLog)) {
         alert('重複するタブを閉じました');
       }
     }
@@ -18,7 +23,7 @@ export const CloseDuplicateTabButton = (): JSX.Element => {
 /**
  * 重複するURLのタブを閉じます
  */
-const closeDuplicateTabs = (): boolean => {
+const closeDuplicateTabs = (enableConsoleLog: boolean): boolean => {
   let isClosed = false;
   chrome.tabs.query({}, (result) => {
     const urls = [];
@@ -29,7 +34,9 @@ const closeDuplicateTabs = (): boolean => {
         continue;
       }
       // 重複するURLのタブはClose
-      console.debug('close duplicate tab ' + tab.url);
+      if (enableConsoleLog) {
+        console.debug('close duplicate tab ' + tab.url);
+      }
       chrome.tabs.remove(tab.id);
       isClosed = true;
     }

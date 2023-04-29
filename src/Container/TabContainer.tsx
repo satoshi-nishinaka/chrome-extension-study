@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface TabContainerProps {
+type TabContainerProps = {
   active: boolean;
   identify: string;
   title: string | null;
-}
+};
 
 export const TabContainer: React.FC<TabContainerProps> = ({
   active,

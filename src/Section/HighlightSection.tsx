@@ -1,9 +1,11 @@
 import React = require('react');
-import { Storage } from '../Storage';
+import { IStorage } from '../Storage';
 import { useEffect, useState } from 'react';
-interface HighlightSectionProps {
-  storage: Storage;
-}
+
+type HighlightSectionProps = {
+  storage: IStorage;
+};
+
 type State = {
   enableHighlight: boolean;
   highlightWords: string;
@@ -26,7 +28,7 @@ export const HighlightSection = ({
   };
 
   useEffect(() => {
-    storage.readValues(() => {
+    storage.readValues().then(() => {
       setState({
         highlightWords: storage.highlightWords,
         enableHighlight: storage.enableHighlight,
@@ -52,7 +54,6 @@ export const HighlightSection = ({
         className="form-control"
         rows={8}
         disabled={!state.enableHighlight}
-        defaultChecked={false}
         onChange={(event) =>
           setState({ ...state, highlightWords: event.target.value })
         }
@@ -63,9 +64,8 @@ export const HighlightSection = ({
           <input
             type="checkbox"
             className="mx-2"
-            defaultChecked={false}
             checked={state.showSucceedMessage}
-            onClick={() =>
+            onChange={() =>
               setState({
                 ...state,
                 showSucceedMessage: !state.showSucceedMessage,

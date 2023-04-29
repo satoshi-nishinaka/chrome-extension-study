@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface TabEntryProps {
+type TabEntryProps = {
   title: string;
   identify: string;
   active: boolean;
-}
+};
 
 export default function (props: TabEntryProps): JSX.Element {
   const { title, identify, active } = props;

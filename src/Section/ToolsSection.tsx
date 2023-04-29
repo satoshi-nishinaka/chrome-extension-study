@@ -5,8 +5,13 @@ import { CopyToClipBoardAllTabUrlButton } from '../FunctionalButton/CopyToClipBo
 import { OpenByTextButton } from '../FunctionalButton/OpenByTextButton';
 import { ReloadAllTabsButton } from '../FunctionalButton/ReloadAllTabsButton';
 import { CloseDuplicateTabButton } from '../FunctionalButton/CloseDuplicateTabButton';
+import { Storage } from '../Storage';
 
-export const ToolsSection = (): JSX.Element => {
+type Props = {
+  storage: Storage;
+};
+
+export const ToolsSection = (props: Props): JSX.Element => {
   return (
     <>
       <CardContainer title="テキストエリアのURLをすべて開く">
@@ -16,7 +21,7 @@ export const ToolsSection = (): JSX.Element => {
         <CopyToClipBoardButton />
         <CopyToClipBoardAllTabUrlButton />
         <ReloadAllTabsButton />
-        <CloseDuplicateTabButton />
+        <CloseDuplicateTabButton storage={props.storage} />
       </CardContainer>
     </>
   );

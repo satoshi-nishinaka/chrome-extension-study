@@ -2,11 +2,12 @@
 
 [satoshi-nishinaka/chrome-extension-study](https://github.com/satoshi-nishinaka/chrome-extension-study)
 
-Qiita の記事にある「表示しているページの URL をクリップボードにコピーする」を元に、Chrome 拡張及び TypeScript, React, SCSS について勉強する。
+Qiita の記事にある「表示しているページの URL をクリップボードにコピーする」を元に、Chrome 拡張及び TypeScript, React, SCSS について勉強する。<br />
 目的は Chrome 拡張の作成なので、既にこの世に同じようなものがあるかどうかは気にしません。
 
 - [表示中のページのタイトルと URL をキーボードショートカットでクリップボードに保存する Chrome 拡張を作ってみた - Qiita](https://qiita.com/satake_masaki/items/def09ca51731efa2826f)
 
+TypeScriptの導入に関しては chibat さんのレポジトリを元に行いました。
 - [chibat/chrome-extension-typescript-starter: Chrome Extension TypeScript Starter](https://github.com/chibat/chrome-extension-typescript-starter)
 
 ## Prerequisites
@@ -54,6 +55,14 @@ npm run watch
 Run watch mode.
 
 type `Ctrl + Shift + B`
+
+### Lint
+
+Lintによる自動修正
+
+```
+npm run lint:fix
+```
 
 ## Load extension to chrome
 
