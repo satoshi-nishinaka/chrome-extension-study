@@ -52,20 +52,10 @@ jobs:
           name: artifact
           path: artifact/url.txt
 
-  release-binary:
-    name: Release Binary
+  release:
+    name: Release
     needs: setup-release
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        archtec: [amd64, arm64]
-        include:
-          - archtec: amd64
-            goos: linux
-            arch: amd64
-          - archtec: arm64
-            goos: linux
-            arch: arm64
 
     steps:
       - uses: actions/checkout@v3
@@ -77,8 +67,8 @@ jobs:
       - name: Build
         run: |
           npm i && npm run build
-          zip -j -r ${{ github.event.repository.name }}_${{ matrix.goos }}_${{ matrix.arch }} dist
-          ls 
+          zip -r ${{ github.event.repository.name }} dist
+          ls
 
       - name: Download artifact to get url to upload to release
         uses: actions/download-artifact@v1
@@ -98,6 +88,6 @@ jobs:
 
         with:
           upload_url: ${{ steps.get_url.outputs.upload_url }}
-          asset_path: ./${{ github.event.repository.name }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
-          asset_name: ${{ github.event.repository.name }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
+          asset_path: ./${{ github.event.repository.name }}.zip
+          asset_name: ${{ github.event.repository.name }}.zip
           asset_content_type: application/octet-stream
