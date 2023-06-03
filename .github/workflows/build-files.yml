@@ -79,7 +79,7 @@ jobs:
         id: get_url
         run: |
           url=$(cat artifact/url.txt)
-          echo "##[set-output name=upload_url;]$url"
+          echo "name=upload_url" >> "$GITHUB_OUTPUT"
 
       - name: Upload release asset
         uses: actions/upload-release-asset@v1.0.1
