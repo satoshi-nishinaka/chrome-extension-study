@@ -82,10 +82,9 @@ jobs:
           echo "name=upload_url" >> "$GITHUB_OUTPUT"
 
       - name: Upload release asset
-        uses: actions/upload-release-asset@v1.0.1
+        uses: sekwah41/upload-release-assets@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
         with:
           upload_url: ${{ steps.get_url.outputs.upload_url }}
           asset_path: ./${{ github.event.repository.name }}.zip
