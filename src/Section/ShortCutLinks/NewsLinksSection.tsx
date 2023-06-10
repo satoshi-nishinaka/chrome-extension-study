@@ -11,6 +11,12 @@ export const NewsLinksSection = (props: Props): JSX.Element => {
   return (
     <CardContainer title="☆News★">
       <ImageButton
+        title="Yahoo!ニュース"
+        url="https://news.yahoo.co.jp/"
+        image="https://s.yimg.jp/c/icon/s/bsc/2.0/favicon.ico"
+        storage={storage}
+      />
+      <ImageButton
         title="スポーツナビ"
         image="https://s.yimg.jp/images/sports/common/favicon/favicon.ico"
         url="https://sports.yahoo.co.jp/"

@@ -30,7 +30,7 @@ export const SNSLinksSection = (props: Props): JSX.Element => {
       />
       <ImageButton
         title="Find your inspiration. | Flickr"
-        image="https://s.yimg.com/pw/favicon.ico"
+        image="https://combo.staticflickr.com/pw/favicon.ico"
         url="https://www.flickr.com/"
         storage={storage}
       />
