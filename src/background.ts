@@ -55,3 +55,50 @@ chrome.commands.onCommand.addListener((command) => {
       break;
   }
 });
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: 'copy_all_urls',
+    title: 'ページ内のリンクをクリップボードにコピーする',
+  });
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    const copyAllUrlInPage = () => {
+      const anchors = document.getElementsByTagName('a');
+      const urls = [];
+      for (let i = 0; i < anchors.length; i++) {
+        const anchor = anchors[i];
+        const href = anchor.href;
+        if (href && urls.includes(href) === false) {
+          // 重複は除外した状態でリストを作る
+          urls.push(href);
+        }
+      }
+
+      if (urls.length === 0) {
+        // コピーするものがない場合はここで終了
+        return;
+      }
+
+      // 1. 任意のテキストを格納したテキストエリアを作成
+      const textArea = document.createElement('textarea');
+      textArea.value = urls.join('\n');
+      document.body.appendChild(textArea);
+
+      // 2. 作成したテキストエリアを選択し、クリップボードに保存
+      textArea.select();
+      document.execCommand('copy');
+
+      // 3. テキストエリアを削除
+      document.body.removeChild(textArea);
+
+      alert(`${urls.length}件のURLをコピーしました。`);
+    };
+
+    if (info.menuItemId === 'copy_all_urls') {
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: copyAllUrlInPage,
+      });
+    }
+  });
+});
