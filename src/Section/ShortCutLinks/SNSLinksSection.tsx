@@ -52,6 +52,18 @@ export const SNSLinksSection = (props: Props): JSX.Element => {
         url="https://www.last.fm/ja/home"
         storage={storage}
       />
+      <ImageButton
+        title="Bluesky"
+        url="https://blueskyweb.xyz/"
+        image="https://blueskyweb.xyz/images/favicon-32x32.png"
+        storage={storage}
+      />
+      <ImageButton
+        title="Threads"
+        url="https://www.threads.net/login"
+        image="https://static.cdninstagram.com/rsrc.php/v3/yV/r/_8T3PbCSTRI.png"
+        storage={storage}
+      />
     </CardContainer>
   );
 };
