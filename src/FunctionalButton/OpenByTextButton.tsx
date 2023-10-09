@@ -7,10 +7,11 @@ export const OpenByTextButton = (): JSX.Element => {
 
   const execute = (): void => {
     const lines = unique(text.split('\n'));
-    for (const line of lines) {
-      if (line.startsWith('http://') || line.startsWith('https://')) {
+    for (const url of lines) {
+      if (url.startsWith('http://') || url.startsWith('https://')) {
         chrome.tabs.create({
-          url: line,
+          url: url,
+          active: false,
         });
       }
     }

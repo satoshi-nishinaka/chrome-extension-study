@@ -1,6 +1,6 @@
 {
   "name": "short-cut-extension",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "short-cut-extension",
   "main": "index.js",
   "scripts": {
