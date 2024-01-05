@@ -4,6 +4,7 @@ type CardContainerProps = {
   title?: string;
   cardClassName?: string;
   cardBodyClassName?: string;
+  children?: React.ReactNode;
 };
 
 export const CardContainer: React.FC<CardContainerProps> = ({

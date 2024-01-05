@@ -4,6 +4,7 @@ type TabContainerProps = {
   active: boolean;
   identify: string;
   title: string | null;
+  children?: React.ReactNode;
 };
 
 export const TabContainer: React.FC<TabContainerProps> = ({

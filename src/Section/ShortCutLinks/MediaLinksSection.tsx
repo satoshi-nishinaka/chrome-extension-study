@@ -35,9 +35,15 @@ export const MediaLinksSection = (props: Props): JSX.Element => {
         storage={storage}
       />
       <ImageButton
-        title="njpwworld.com 新日本プロレスワールド"
-        url="http://njpwworld.com/"
-        image="http://njpwworld.com/favicon.ico"
+        title="NJPW WORLD"
+        url="https://www.njpwworld.com/"
+        image="https://storage.googleapis.com/njpwworld/gallery/images/favicon.ico"
+        storage={storage}
+      />
+      <ImageButton
+        title="Spotify - Web Player：すべての人に音楽を"
+        image="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico"
+        url="https://open.spotify.com/intl-ja"
         storage={storage}
       />
     </CardContainer>
