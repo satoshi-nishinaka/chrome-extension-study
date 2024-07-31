@@ -12,7 +12,7 @@ export const MediaLinksSection = (props: Props): JSX.Element => {
     <CardContainer title="☆Tools★">
       <ImageButton
         title="DAZN"
-        image="http://cdn.dazn.com/app/web/1.36.4/images/favicon/favicon-96x96.png"
+        image="https://www.dazn.com/favicon.svg"
         url="https://www.dazn.com/ja-JP/home"
         storage={storage}
       />

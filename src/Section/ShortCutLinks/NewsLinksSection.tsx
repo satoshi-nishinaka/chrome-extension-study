@@ -17,9 +17,27 @@ export const NewsLinksSection = (props: Props): JSX.Element => {
         storage={storage}
       />
       <ImageButton
+        title="NHKニュース 速報・最新情報"
+        url="https://www3.nhk.or.jp/news/"
+        image="https://www3.nhk.or.jp/news/parts16/images/favicon/favicon.ico"
+        storage={storage}
+      />
+      <ImageButton
         title="スポーツナビ"
         image="https://s.yimg.jp/images/sports/common/favicon/favicon.ico"
         url="https://sports.yahoo.co.jp/"
+        storage={storage}
+      />
+      <ImageButton
+        title="日刊スポーツ : nikkansports.com"
+        url="https://www.nikkansports.com/"
+        image="https://cache2.nipc.jp/mod2015/img/icon/favicon.ico"
+        storage={storage}
+      />
+      <ImageButton
+        title="スポニチ Sponichi Annex"
+        url="https://www.sponichi.co.jp/"
+        image="https://www.sponichi.co.jp/favicon.ico"
         storage={storage}
       />
       <ImageButton
