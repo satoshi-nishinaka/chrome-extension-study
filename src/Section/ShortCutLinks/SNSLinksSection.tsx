@@ -61,7 +61,7 @@ export const SNSLinksSection = (props: Props): JSX.Element => {
       <ImageButton
         title="Threads"
         url="https://www.threads.net/login"
-        image="https://static.cdninstagram.com/rsrc.php/v3/yV/r/_8T3PbCSTRI.png"
+        image="https://static.cdninstagram.com/rsrc.php/ye/r/lEu8iVizmNW.ico"
         storage={storage}
       />
     </CardContainer>
