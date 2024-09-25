@@ -71,7 +71,7 @@ jobs:
           ls
 
       - name: Download artifact to get url to upload to release
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: artifact
 
