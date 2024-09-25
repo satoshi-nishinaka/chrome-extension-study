@@ -18,7 +18,7 @@
     "url": "https://github.com/satoshi-nishinaka/chrome-extension-study.git"
   },
   "dependencies": {
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.0.0",
     "jquery": "^3.6.0",
     "jquery-ui": "^1.13.2",
     "moment": "~2.29.4",
