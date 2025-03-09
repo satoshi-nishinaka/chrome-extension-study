@@ -41,12 +41,6 @@ export const SNSLinksSection = (props: Props): JSX.Element => {
         storage={storage}
       />
       <ImageButton
-        title="YouTube"
-        image="https://s.ytimg.com/yts/img/favicon_32-vflOogEID.png"
-        url="https://www.youtube.com/"
-        storage={storage}
-      />
-      <ImageButton
         title="Last.fm"
         image="https://www.last.fm/static/images/favicon.702b239b6194.ico"
         url="https://www.last.fm/ja/home"
