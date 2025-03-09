@@ -10,7 +10,7 @@ import { TabContainer } from '../TabContainer';
 describe('render', () => {
   test('should render component', async () => {
     const { getByText, getByRole } = render(
-      <TabContainer active={true} identify={'hoge'} title={'hoge'} />
+      <TabContainer activeTabId="hoge" identify="hoge" title="hoge" />
     );
 
     expect(getByText('hoge')).toBeInTheDocument();
