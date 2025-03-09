@@ -3,16 +3,17 @@ import * as React from 'react';
 type TabEntryProps = {
   title: string;
   identify: string;
-  active: boolean;
+  activeTabId: string;
+  onClickEvent: () => void;
 };
 
 export default function (props: TabEntryProps): JSX.Element {
-  const { title, identify, active } = props;
+  const { title, identify, activeTabId, onClickEvent } = props;
 
   const href = `#${identify}`;
-  const className = 'nav-link' + (active ? ' active' : '');
+  const className = 'nav-link' + (activeTabId === identify ? ' active' : '');
   return (
-    <li className="nav-item">
+    <li className="nav-item" onClick={() => onClickEvent()}>
       <a
         className={className}
         id="home-tab"

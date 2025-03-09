@@ -1,7 +1,6 @@
 'use strict';
 
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { useState } from 'react';
 import TabEntry from '../Component/TabEntry';
 import { TabContainer } from './TabContainer';
@@ -18,27 +17,55 @@ import { SNSLinksSection } from '../Section/ShortCutLinks/SNSLinksSection';
 import { TechLinksSection } from '../Section/ShortCutLinks/TechLinksSection';
 import { ToolsSection } from '../Section/ToolsSection';
 import { HighlightSection } from '../Section/HighlightSection';
+import { createRoot } from 'react-dom/client';
 
 const PopupContainer = (): JSX.Element => {
   const [storage] = useState(new Storage());
+  const [activeTabId, setActiveTabId] = useState('home');
 
   return (
     <div className="form-group">
       <section>
         <ul className="nav nav-tabs" id="myTab" role="tablist">
-          <TabEntry title="共通リンク" identify="home" active={true} />
-          <TabEntry title="ツール" identify="tools" active={false} />
-          <TabEntry title="ハイライト" identify="highlight" active={false} />
+          <TabEntry
+            title="共通リンク"
+            identify="home"
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('home')}
+          />
+          <TabEntry
+            title="ツール"
+            identify="tools"
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('tools')}
+          />
+          <TabEntry
+            title="ハイライト"
+            identify="highlight"
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('highlight')}
+          />
           <TabEntry
             title="ページ情報"
             identify="page-information"
-            active={false}
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('page-information')}
           />
-          <TabEntry title="設定" identify="settings" active={false} />
-          <TabEntry title="About" identify="about" active={false} />
+          <TabEntry
+            title="設定"
+            identify="settings"
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('settings')}
+          />
+          <TabEntry
+            title="About"
+            identify="about"
+            activeTabId={activeTabId}
+            onClickEvent={() => setActiveTabId('about')}
+          />
         </ul>
         <div className="tab-content" id="myTabContent">
-          <TabContainer active={true} identify="home" title={null}>
+          <TabContainer activeTabId={activeTabId} identify="home" title={null}>
             <SNSLinksSection storage={storage} />
             <MediaLinksSection storage={storage} />
             <NewsLinksSection storage={storage} />
@@ -46,23 +73,39 @@ const PopupContainer = (): JSX.Element => {
             <FinTechLinksSection storage={storage} />
             <TechLinksSection storage={storage} />
           </TabContainer>
-          <TabContainer active={false} identify="tools" title="Tools">
+          <TabContainer
+            activeTabId={activeTabId}
+            identify="tools"
+            title="Tools"
+          >
             <ToolsSection storage={storage} />
           </TabContainer>
-          <TabContainer active={false} identify="highlight" title="ハイライト">
+          <TabContainer
+            activeTabId={activeTabId}
+            identify="highlight"
+            title="ハイライト"
+          >
             <HighlightSection storage={storage} />
           </TabContainer>
           <TabContainer
-            active={false}
+            activeTabId={activeTabId}
             identify="page-information"
             title="Page Information"
           >
             <PageInformationSection />
           </TabContainer>
-          <TabContainer active={false} identify="settings" title="Settings">
+          <TabContainer
+            activeTabId={activeTabId}
+            identify="settings"
+            title="Settings"
+          >
             <SettingSection storage={storage} />
           </TabContainer>
-          <TabContainer active={false} identify="about" title="About">
+          <TabContainer
+            activeTabId={activeTabId}
+            identify="about"
+            title="About"
+          >
             <CardContainer title={null} cardClassName="text-center">
               <LinkButton
                 storage={storage}
@@ -77,7 +120,6 @@ const PopupContainer = (): JSX.Element => {
   );
 };
 
-const root = document.getElementById('root');
-if (root) {
-  ReactDOM.render(<PopupContainer />, root);
-}
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<PopupContainer />);

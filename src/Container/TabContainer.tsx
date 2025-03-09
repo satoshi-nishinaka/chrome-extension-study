@@ -1,19 +1,20 @@
 import * as React from 'react';
 
 type TabContainerProps = {
-  active: boolean;
+  activeTabId: string;
   identify: string;
   title: string | null;
   children?: React.ReactNode;
 };
 
 export const TabContainer: React.FC<TabContainerProps> = ({
-  active,
+  activeTabId,
   identify,
   title,
   children,
 }) => {
-  const tabClassName = 'tab-pane fade show' + (active ? ' active' : '');
+  const tabClassName =
+    'tab-pane fade show' + (activeTabId === identify ? ' active' : '');
   return (
     <div
       className={tabClassName}

@@ -19,7 +19,7 @@ export const TechLinksSection = (props: Props): JSX.Element => {
       <ImageButton
         title="開発者向けのウェブ技術 | MDN"
         url="https://developer.mozilla.org/ja/docs/Web"
-        image="https://developer.mozilla.org/favicon-48x48.cbbd161b.png"
+        image="https://developer.mozilla.org/favicon-48x48.bc390275e955dacb2e65.png"
         storage={storage}
       />
       <ImageButton
