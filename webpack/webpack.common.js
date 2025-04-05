@@ -34,13 +34,10 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        // Sassファイルの読み込みとコンパイル
         use: [
-          // CSSファイルを抽出するように MiniCssExtractPlugin のローダーを指定
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          // CSSをバンドルするためのローダー
           {
             loader: 'css-loader',
             options: {
@@ -48,16 +45,12 @@ module.exports = {
               sourceMap: enabledSourceMap,
             },
           },
-          // Sass を CSS へ変換するローダー
           {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
-              sassOptions: {
-                // fiber: require('fibers'),
-                fiber: false,
-              },
               sourceMap: enabledSourceMap,
+              api: 'modern',
             },
           },
         ],
