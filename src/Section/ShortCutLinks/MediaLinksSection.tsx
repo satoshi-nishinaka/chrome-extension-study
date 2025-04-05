@@ -47,6 +47,12 @@ export const MediaLinksSection = (props: Props): JSX.Element => {
         storage={storage}
       />
       <ImageButton
+        title="radiko"
+        url="https://radiko.jp/#!/top"
+        image="https://radiko.jp/favicon.ico"
+        storage={storage}
+      />
+      <ImageButton
         title="DAZN"
         image="https://www.dazn.com/favicon.svg"
         url="https://www.dazn.com/ja-JP/home"
