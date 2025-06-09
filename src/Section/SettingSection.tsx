@@ -14,7 +14,7 @@ type State = {
 
 export const SettingSection = ({
   storage,
-}: SettingSectionProps): JSX.Element => {
+}: SettingSectionProps): React.ReactNode => {
   const [state, setState] = useState<State>({
     enableConsoleLog: false,
     isOpenNewTab: false,

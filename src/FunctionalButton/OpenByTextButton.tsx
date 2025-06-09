@@ -2,7 +2,7 @@ import * as React from 'react';
 import { unique } from '../Functions/Unique';
 import { useState } from 'react';
 
-export const OpenByTextButton = (): JSX.Element => {
+export const OpenByTextButton = (): React.ReactNode => {
   const [text, setText] = useState('');
 
   const execute = (): void => {

@@ -6,7 +6,7 @@ import { IStorage } from '../../Storage';
 type Props = {
   storage: IStorage;
 };
-export const NewsLinksSection = (props: Props): JSX.Element => {
+export const NewsLinksSection = (props: Props): React.ReactNode => {
   const { storage } = props;
   return (
     <CardContainer title="☆News★">

@@ -7,7 +7,7 @@ type TabEntryProps = {
   onClickEvent: () => void;
 };
 
-export default function (props: TabEntryProps): JSX.Element {
+export default function (props: TabEntryProps): React.ReactNode {
   const { title, identify, activeTabId, onClickEvent } = props;
 
   const href = `#${identify}`;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CardContainer } from '../Container/CardContainer';
 import { useEffect, useState } from 'react';
 
-export const PageInformationSection = (): JSX.Element => {
+export const PageInformationSection = (): React.ReactNode => {
   const [state, setState] = useState({
     title: '',
     url: '',

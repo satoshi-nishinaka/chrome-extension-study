@@ -9,7 +9,7 @@ type ImageButtonProps = {
   storage: IStorage;
 };
 
-export const ImageButton = (props: ImageButtonProps): JSX.Element => {
+export const ImageButton = (props: ImageButtonProps): React.ReactNode => {
   const { title, image, url, storage } = props;
 
   const transitionTo = (): void => {

@@ -4,7 +4,7 @@ type Props = {
   storage: Storage;
 };
 
-export const CloseDuplicateTabButton = (props: Props): JSX.Element => {
+export const CloseDuplicateTabButton = (props: Props): React.ReactNode => {
   const execute = (): void => {
     if (confirm('重複するタブを閉じます\nよろしいですか？？')) {
       if (closeDuplicateTabs(props.storage.enableConsoleLog)) {
