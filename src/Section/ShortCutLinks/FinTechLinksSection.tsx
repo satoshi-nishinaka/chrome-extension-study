@@ -6,7 +6,7 @@ import { IStorage } from '../../Storage';
 type Props = {
   storage: IStorage;
 };
-export const FinTechLinksSection = (props: Props): JSX.Element => {
+export const FinTechLinksSection = (props: Props): React.ReactNode => {
   const { storage } = props;
   return (
     <CardContainer title="☆Fin-tech★">

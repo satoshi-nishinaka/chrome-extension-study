@@ -6,7 +6,7 @@ import { IStorage } from '../../Storage';
 type Props = {
   storage: IStorage;
 };
-export const TechLinksSection = (props: Props): JSX.Element => {
+export const TechLinksSection = (props: Props): React.ReactNode => {
   const { storage } = props;
   return (
     <CardContainer title="☆Tech★">

@@ -1,6 +1,6 @@
-import React = require('react');
 import { IStorage } from '../Storage';
 import { useEffect, useState } from 'react';
+import * as React from 'react';
 
 type HighlightSectionProps = {
   storage: IStorage;
@@ -14,7 +14,7 @@ type State = {
 
 export const HighlightSection = ({
   storage,
-}: HighlightSectionProps): JSX.Element => {
+}: HighlightSectionProps): React.ReactNode => {
   const [state, setState] = useState<State>({
     enableHighlight: false,
     highlightWords: '',

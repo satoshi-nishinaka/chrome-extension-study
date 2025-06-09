@@ -11,7 +11,7 @@ type Props = {
   storage: Storage;
 };
 
-export const ToolsSection = (props: Props): JSX.Element => {
+export const ToolsSection = (props: Props): React.ReactNode => {
   return (
     <>
       <CardContainer title="テキストエリアのURLをすべて開く">

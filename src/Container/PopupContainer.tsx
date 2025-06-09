@@ -19,7 +19,7 @@ import { ToolsSection } from '../Section/ToolsSection';
 import { HighlightSection } from '../Section/HighlightSection';
 import { createRoot } from 'react-dom/client';
 
-const PopupContainer = (): JSX.Element => {
+const PopupContainer = (): React.ReactNode => {
   const [storage] = useState(new Storage());
   const [activeTabId, setActiveTabId] = useState('home');
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-export const ReloadAllTabsButton = (): JSX.Element => {
+export const ReloadAllTabsButton = (): React.ReactNode => {
   const execute = (): void => {
     chrome.tabs.query({}, (result) => {
       for (const tab of result) {

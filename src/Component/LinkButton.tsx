@@ -8,7 +8,7 @@ type LinkButtonProps = {
   storage: IStorage;
 };
 
-export const LinkButton = (props: LinkButtonProps): JSX.Element => {
+export const LinkButton = (props: LinkButtonProps): React.ReactNode => {
   const { text, url, storage } = props;
   const transitionTo = (): void => {
     transitionToNextPage(url, storage.isOpenNewTab);
