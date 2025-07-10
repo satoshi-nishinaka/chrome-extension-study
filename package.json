@@ -1,6 +1,6 @@
 {
   "name": "short-cut-extension",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "short-cut-extension",
   "main": "index.js",
   "scripts": {
@@ -18,9 +18,9 @@
     "url": "https://github.com/satoshi-nishinaka/chrome-extension-study.git"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0",
-    "jquery": "^3.6.0",
-    "jquery-ui": "^1.13.2",
+    "bootstrap": "^5.3.7",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.14.1",
     "moment": "~2.29.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
