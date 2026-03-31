@@ -64,24 +64,23 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     const copyAllUrlInPage = () => {
       const anchors = document.getElementsByTagName('a');
-      const urls = [];
-      for (let i = 0; i < anchors.length; i++) {
-        const anchor = anchors[i];
+      const urls: Set<string> = new Set<string>();
+      for (const anchor of anchors) {
         const href = anchor.href;
-        if (href && urls.includes(href) === false) {
+        if (href && urls.has(href) === false) {
           // 重複は除外した状態でリストを作る
-          urls.push(href);
+          urls.add(href);
         }
       }
 
-      if (urls.length === 0) {
+      if (urls.size === 0) {
         // コピーするものがない場合はここで終了
         return;
       }
 
       // 1. 任意のテキストを格納したテキストエリアを作成
       const textArea = document.createElement('textarea');
-      textArea.value = urls.join('\n');
+      textArea.value = Array.from(urls).join('\n');
       document.body.appendChild(textArea);
 
       // 2. 作成したテキストエリアを選択し、クリップボードに保存
@@ -91,7 +90,7 @@ chrome.runtime.onInstalled.addListener(() => {
       // 3. テキストエリアを削除
       document.body.removeChild(textArea);
 
-      alert(`${urls.length}件のURLをコピーしました。`);
+      alert(`${urls.size}件のURLをコピーしました。`);
     };
 
     if (info.menuItemId === 'copy_all_urls') {
