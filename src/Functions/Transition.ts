@@ -3,22 +3,22 @@
  * @param url
  * @param isOpenNewTab 新しいタブで開くか？
  */
-export const transitionToNextPage = (
+export const transitionToNextPage = async (
   url: string,
   isOpenNewTab: boolean
-): void => {
+): Promise<void> => {
   if (url === undefined) {
     return;
   }
   if (isOpenNewTab) {
-    chrome.tabs.create({ url: url });
+    await chrome.tabs.create({ url: url });
     return;
   }
 
   // Get the current Tab
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
     const active = tabs[0].id;
     // Set the URL to the Local-NTP (New Tab Page)
-    chrome.tabs.update(active, { url: url });
+    await chrome.tabs.update(active, { url: url });
   });
 };

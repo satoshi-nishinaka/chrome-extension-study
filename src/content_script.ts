@@ -88,7 +88,6 @@ const highlight = (storage: Storage): void => {
       )[0] as HTMLElement;
       label.style.display = 'none';
     });
-    // document.appendChild(label);
   }
 };
 
