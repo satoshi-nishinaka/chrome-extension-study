@@ -1,6 +1,6 @@
 {
   "name": "ShortCut Extension",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "manifest_version": 3,
   "background": {
     "service_worker": "js/background.js"

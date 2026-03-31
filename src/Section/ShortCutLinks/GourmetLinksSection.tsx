@@ -28,6 +28,18 @@ export const GourmetLinksSection = (props: Props): React.ReactNode => {
         url="https://www.gnavi.co.jp/"
         storage={storage}
       />
+      <ImageButton
+        title="オンラインで料理を注文 | 料理配達サービス アプリ | Uber Eats"
+        url="https://www.ubereats.com/jp/"
+        image="https://www.ubereats.com/_static/d526ae562360062f.ico"
+        storage={storage}
+      />
+      <ImageButton
+        title="出前館】ピザ・弁当などの宅配デリバリーサイト"
+        url="https://demae-can.com/"
+        image="https://cdn.demae-can.com/contents/img_s/favicon-v2.ico"
+        storage={storage}
+      />
     </CardContainer>
   );
 };
