@@ -1,0 +1,48 @@
+{
+  "name": "ShortCut Extension",
+  "version": "2.1.7",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "contextMenus",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "action": {
+    "default_title": "",
+    "default_icon": "icons/128.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["js/content_script.js"],
+      "run_at": "document_start",
+      "css": ["css/style.css"]
+    }
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "commands": {
+    "save_url_and_title": {
+      "suggested_key": {
+        "default": "Alt+C"
+      },
+      "description": "Save Title and URL"
+    },
+    "save_url_and_title_for_markdown": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Save Title and URL for Markdown"
+    }
+  }
+}

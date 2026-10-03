@@ -3,7 +3,9 @@ export const ReloadAllTabsButton = (): React.ReactNode => {
   const execute = (): void => {
     chrome.tabs.query({}, (result) => {
       for (const tab of result) {
-        chrome.tabs.reload(tab.id);
+        if (tab.id !== undefined) {
+          chrome.tabs.reload(tab.id);
+        }
       }
     });
   };

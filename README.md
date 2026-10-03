@@ -12,7 +12,7 @@ TypeScriptの導入に関しては chibat さんのレポジトリを元に行�
 
 ## Prerequisites
 
-- [node + npm](https://nodejs.org/) (~15)
+- [Node.js + npm](https://nodejs.org/) (Node.js 22 以上)
 
 ## Option
 
@@ -42,12 +42,30 @@ npm install
 npm run build
 ```
 
+Chrome と Firefox の両方をビルドし、次のディレクトリへ出力します。
+
+- Chrome: `dist/chrome`
+- Firefox: `dist/firefox`
+
+片方だけをビルドする場合:
+
+```shell
+npm run build:chrome
+npm run build:firefox
+```
+
 ## Build in watch mode
 
 ### terminal
 
 ```
 npm run watch
+```
+
+`npm run watch` は Chrome 用です。Firefox 用は次を実行します。
+
+```shell
+npm run watch:firefox
 ```
 
 ### Visual Studio Code
@@ -64,13 +82,55 @@ Lintによる自動修正
 npm run lint:fix
 ```
 
-## Load extension to chrome
+## Chrome への読み込み
 
-Load `dist` directory
+Chrome の拡張機能管理画面でデベロッパーモードを有効にし、「パッケージ化されていない拡張機能を読み込む」から `dist/chrome` を選択します。
+
+## Firefox への一時読み込み
+
+ビルド後、次のいずれかを使用します。
+
+```shell
+npm run run:firefox
+```
+
+または Firefox で `about:debugging` を開き、「この Firefox」→「一時的なアドオンを読み込む」から `dist/firefox/manifest.json` を選択します。
+
+Firefox manifest の検証:
+
+```shell
+npm run lint:firefox
+```
+
+AMO 提出用の未署名 ZIP の作成:
+
+```shell
+npm run package:firefox
+```
+
+成果物は `artifacts` に出力されます。この ZIP は AMO への提出用であり、Firefox Release版へ直接インストールすることはできません。
+
+## Firefoxへ恒久的にインストールできるXPIの作成
+
+Firefox Release版へ通常のアドオンとして追加するには、Mozillaによる署名が必要です。AMO Developer HubでAPI資格情報を発行し、環境変数へ設定してから署名します。
+
+```shell
+export WEB_EXT_API_KEY='AMOのJWT issuer'
+export WEB_EXT_API_SECRET='AMOのJWT secret'
+npm run sign:firefox
+```
+
+`sign:firefox` は自己配布用の `unlisted` チャンネルへ送信し、審査・署名が完了するとインストール可能な署名済みXPIを `artifacts` にダウンロードします。API secretはリポジトリや設定ファイルへ保存しないでください。
+
+開発中に署名せず試す場合は、`npm run run:firefox` または `about:debugging` の一時読み込みを使用します。一時読み込みではZIPではなく `dist/firefox/manifest.json` を選択してください。
 
 ## Test
 
-`npx jest` or `npm run test`
+```shell
+npm test
+npm run lint
+npm run test:manifests
+```
 
 ## 複数サイズのアイコン画像の作成
 
