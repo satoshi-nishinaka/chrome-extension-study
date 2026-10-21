@@ -21,7 +21,7 @@
     "bootstrap": "^5.3.7",
     "jquery": "^3.7.1",
     "jquery-ui": "^1.14.1",
-    "moment": "~2.29.4",
+    "moment": "~2.31.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
