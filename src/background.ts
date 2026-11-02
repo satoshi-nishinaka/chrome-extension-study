@@ -14,8 +14,12 @@ export const saveUrlAndTitle = () => {
       console.error('active tab が取得できていない');
       return;
     }
+    if (activeTab.id === undefined) {
+      console.error('active tab のIDが取得できていない');
+      return;
+    }
     console.info(activeTab);
-    copy(activeTab.id, `${activeTab.title}\n${activeTab.url}`);
+    copy(activeTab.id, `${activeTab.title ?? ''}\n${activeTab.url ?? ''}`);
   });
 };
 
@@ -28,8 +32,12 @@ export const saveUrlAndTitleForMarkDown = (): void => {
       console.error('active tab が取得できていない');
       return;
     }
+    if (activeTab.id === undefined) {
+      console.error('active tab のIDが取得できていない');
+      return;
+    }
     console.info(activeTab);
-    copy(activeTab.id, `[${activeTab.title}](${activeTab.url})`);
+    copy(activeTab.id, `[${activeTab.title ?? ''}](${activeTab.url ?? ''})`);
   });
 };
 
@@ -56,48 +64,55 @@ chrome.commands.onCommand.addListener((command) => {
   }
 });
 
+const copyAllUrlInPage = () => {
+  const anchors = document.getElementsByTagName('a');
+  const urls: Set<string> = new Set<string>();
+  for (const anchor of anchors) {
+    const href = anchor.href;
+    if (href && urls.has(href) === false) {
+      // 重複は除外した状態でリストを作る
+      urls.add(href);
+    }
+  }
+
+  if (urls.size === 0) {
+    // コピーするものがない場合はここで終了
+    return;
+  }
+
+  // 1. 任意のテキストを格納したテキストエリアを作成
+  const textArea = document.createElement('textarea');
+  textArea.value = Array.from(urls).join('\n');
+  document.body.appendChild(textArea);
+
+  // 2. 作成したテキストエリアを選択し、クリップボードに保存
+  textArea.select();
+  document.execCommand('copy');
+
+  // 3. テキストエリアを削除
+  document.body.removeChild(textArea);
+
+  alert(`${urls.size}件のURLをコピーしました。`);
+};
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: 'copy_all_urls',
     title: 'ページ内のリンクをクリップボードにコピーする',
   });
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    const copyAllUrlInPage = () => {
-      const anchors = document.getElementsByTagName('a');
-      const urls: Set<string> = new Set<string>();
-      for (const anchor of anchors) {
-        const href = anchor.href;
-        if (href && urls.has(href) === false) {
-          // 重複は除外した状態でリストを作る
-          urls.add(href);
-        }
-      }
+});
 
-      if (urls.size === 0) {
-        // コピーするものがない場合はここで終了
-        return;
-      }
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId !== 'copy_all_urls' || tab?.id === undefined) {
+    return;
+  }
 
-      // 1. 任意のテキストを格納したテキストエリアを作成
-      const textArea = document.createElement('textarea');
-      textArea.value = Array.from(urls).join('\n');
-      document.body.appendChild(textArea);
-
-      // 2. 作成したテキストエリアを選択し、クリップボードに保存
-      textArea.select();
-      document.execCommand('copy');
-
-      // 3. テキストエリアを削除
-      document.body.removeChild(textArea);
-
-      alert(`${urls.size}件のURLをコピーしました。`);
-    };
-
-    if (info.menuItemId === 'copy_all_urls') {
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        func: copyAllUrlInPage,
-      });
-    }
-  });
+  chrome.scripting
+    .executeScript({
+      target: { tabId: tab.id },
+      func: copyAllUrlInPage,
+    })
+    .catch((reason) => {
+      console.error('ページ内URLのコピーに失敗しました。', reason);
+    });
 });
