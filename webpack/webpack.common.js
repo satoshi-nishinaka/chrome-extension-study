@@ -7,7 +7,10 @@ const enabledSourceMap =  process.env.NODE_ENV !== 'production';
 
 const srcDir = '../src/';
 
-module.exports = {
+module.exports = (env = {}) => {
+  const browser = env.browser === 'firefox' ? 'firefox' : 'chrome';
+
+  return {
   entry: {
     popup: path.join(__dirname, srcDir + 'popup.ts'),
     background: path.join(__dirname, srcDir + 'background.ts'),
@@ -16,8 +19,9 @@ module.exports = {
     popupContainer: path.join(__dirname, srcDir + 'Container/PopupContainer'),
   },
   output: {
-    path: path.join(__dirname, '../dist/js'),
+    path: path.join(__dirname, `../dist/${browser}/js`),
     filename: '[name].js',
+    clean: true,
   },
   optimization: {
     splitChunks: {
@@ -67,10 +71,22 @@ module.exports = {
       filename: '../css/style.css',
     }),
     new CopyPlugin({
-      patterns: [{ from: '.', to: '../', context: 'public' }],
+      patterns: [
+        {
+          from: '.',
+          to: '../',
+          context: 'public',
+          globOptions: { ignore: ['**/generate_icons.sh'] },
+        },
+        {
+          from: path.join(__dirname, `../manifests/${browser}.json`),
+          to: '../manifest.json',
+        },
+      ],
       options: {},
     }),
   ],
   devtool: "source-map",
   performance: { hints: false },
+  };
 };

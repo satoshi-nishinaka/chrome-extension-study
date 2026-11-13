@@ -18,6 +18,9 @@ export const transitionToNextPage = async (
   // Get the current Tab
   chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
     const active = tabs[0].id;
+    if (active === undefined) {
+      return;
+    }
     // Set the URL to the Local-NTP (New Tab Page)
     await chrome.tabs.update(active, { url: url });
   });

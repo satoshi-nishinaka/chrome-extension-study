@@ -14,6 +14,44 @@ const ignoreTags = [
   'img',
 ];
 
+const escapeRegExp = (value: string): string => {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
+const replaceTextWithHighlight = (
+  element: HTMLElement,
+  highlightWords: string[]
+): void => {
+  const text = element.textContent;
+  if (!text) {
+    return;
+  }
+
+  const words = highlightWords.filter((word) => text.includes(word));
+  if (words.length === 0) {
+    return;
+  }
+
+  const pattern = new RegExp(
+    `(${words.map((word) => escapeRegExp(word)).join('|')})`,
+    'g'
+  );
+  const fragment = document.createDocumentFragment();
+
+  for (const part of text.split(pattern)) {
+    if (words.includes(part)) {
+      const highlight = document.createElement('span');
+      highlight.className = 'shortcut-extension-highlight';
+      highlight.textContent = part;
+      fragment.appendChild(highlight);
+    } else {
+      fragment.appendChild(document.createTextNode(part));
+    }
+  }
+
+  element.replaceChildren(fragment);
+};
+
 console.info('---- short-cut-extension start ----');
 
 /**
@@ -58,28 +96,14 @@ const highlight = (storage: Storage): void => {
       // テキスト要素もhasChildNodes === trueになる
       return;
     }
-    const htmlElement = element as HTMLElement;
-    let html = element.innerHTML;
-    const text = htmlElement.innerText;
-    highlightWords.map((value) => {
-      if (!text || text.indexOf(value) === -1) {
-        return;
-      }
-      const regExp = new RegExp(`(${value})`, 'g');
-      html = html.replace(
-        regExp,
-        '<span class="shortcut-extension-highlight">$1</span>'
-      );
-    });
-
-    htmlElement.innerHTML = html;
+    replaceTextWithHighlight(element as HTMLElement, highlightWords);
   });
   if (storage.enableConsoleLog) {
     console.debug('replace finish');
   }
   if (storage.showSucceedMessage) {
     const label = document.createElement('span');
-    label.innerHTML = 'Highlight text';
+    label.textContent = 'Highlight text';
     label.className = 'shortcut-extension-succeed-message';
     label.addEventListener('click', () => {
       console.debug('clicked');
